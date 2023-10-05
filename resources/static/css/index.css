@@ -214,7 +214,7 @@
     height: 29px;
     left: calc(50% - 59px/2 + 532.5px);
     top: calc(50% - 29px/2 + 434.5px);
-font-family
+    font-family: "Montserrat Alternates";
 
 
 
@@ -254,7 +254,7 @@ font-family
     height: 489px;
     left: calc(50% - 313px/2 + 182.5px);
     top: calc(50% - 489px/2 + 122.5px);
-    background: url(talladega-nights-the-ballad-of-ricky-bobby-globe-photos.jpg);
+    //background: url(talladega-nights-the-ballad-of-ricky-bobby-globe-photos.jpg);
 }
 
 /* Rectangle 25 */
@@ -354,7 +354,9 @@ font-family
 }
 
 /* Button all days */
-.button
+.button{
+}
+}
 
 
 
