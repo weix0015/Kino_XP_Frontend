@@ -1,0 +1,363 @@
+/* Login Styles */
+
+/* Button Login */
+.login-button {
+    width: 57px;
+    height: 24px;
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Rectangle 17 */
+.rectangle17 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 148px;
+    height: 139px;
+    left: calc(50% - 148px/2 + 44px);
+    top: calc(50% - 139px/2 - 216.5px);
+    border: 5px solid #FFE296;
+    /* Inside auto layout */
+    flex: none;
+    order: 7;
+    flex-grow: 0;
+    z-index: 7;
+}
+
+/* Rectangle 18 */
+.rectangle18 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 148px;
+    height: 139px;
+    left: calc(50% - 148px/2 + 214px);
+    top: calc(50% - 139px/2 - 216.5px);
+    border: 5px solid #FFE296;
+    /* Inside auto layout */
+    flex: none;
+    order: 8;
+    flex-grow: 0;
+    z-index: 8;
+}
+
+/* Rectangle 19 */
+.rectangle19 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 148px;
+    height: 139px;
+    left: calc(50% - 148px/2 + 384px);
+    top: calc(50% - 139px/2 - 216.5px);
+    border: 5px solid #FFE296;
+    /* Inside auto layout */
+    flex: none;
+    order: 9;
+    flex-grow: 0;
+    z-index: 9;
+}
+
+/* Rectangle 20 */
+.rectangle20 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 148px;
+    height: 139px;
+    left: calc(50% - 148px/2 + 554px);
+    top: calc(50% - 139px/2 - 216.5px);
+    border: 5px solid #FFE296;
+    /* Inside auto layout */
+    flex: none;
+    order: 10;
+    flex-grow: 0;
+    z-index: 10;
+}
+
+/* Rectangle 22 */
+.rectangle22 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 - 549.5px);
+    top: calc(50% - 39px/2 + 386.5px);
+    border: 5px solid #FFE196;
+    /* Inside auto layout */
+    flex: none;
+    order: 11;
+    flex-grow: 0;
+    z-index: 11;
+}
+
+/* Rectangle 30 */
+.rectangle30 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 + 549.5px);
+    top: calc(50% - 39px/2 + 434.5px);
+    border: 5px solid #FFE196;
+    /* Inside auto layout */
+    flex: none;
+    order: 12;
+    flex-grow: 0;
+    z-index: 12;
+}
+
+/* Rectangle 26 */
+.rectangle26 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 + 549.5px);
+    top: calc(50% - 39px/2 + 386.5px);
+    border: 5px solid #FFE196;
+    /* Inside auto layout */
+    flex: none;
+    order: 13;
+    flex-grow: 0;
+    z-index: 13;
+}
+
+/* Rectangle 40 */
+.rectangle40 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 + 549.5px);
+    top: calc(50% - 39px/2 + 386.5px);
+    border: 5px solid #FFE196;
+    /* Inside auto layout */
+    flex: none;
+    order: 14;
+    flex-grow: 0;
+    z-index: 14;
+}
+
+/* Tidspunkter */
+.tidspunkter {
+    position: absolute;
+    width: 145px;
+    height: 29px;
+    left: calc(50% - 145px/2 - 549.5px);
+    top: calc(50% - 29px/2 + 386.5px);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+    /* Inside auto layout */
+    flex: none;
+    order: 15;
+    flex-grow: 0;
+    z-index: 15;
+}
+
+/* Button time1 */
+.button-time1 {
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    isolation: isolate;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: 14px;
+    top: 927px;
+    border: 5px solid #A00E0E;
+    /* Inside auto layout */
+    flex: none;
+    order: 16;
+    flex-grow: 0;
+    z-index: 16;
+}
+
+/* 18:30 */
+.time1 {
+    position: absolute;
+    width: 59px;
+    height: 29px;
+    left: calc(50% - 59px/2);
+    top: calc(50% - 29px/2);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+}
+
+/* 18:30 */
+.time2 {
+    position: absolute;
+    width: 59px;
+    height: 29px;
+    left: calc(50% - 59px/2 + 532.5px);
+    top: calc(50% - 29px/2 + 434.5px);
+font-family
+
+
+
+    /* Tidspunkter 1 */
+.tidspunkter1 {
+    position: absolute;
+    width: 145px;
+    height: 29px;
+    left: calc(50% - 145px/2 + 171.5px);
+    top: calc(50% - 29px/2 + 386.5px);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+}
+
+/* Group 3 */
+.group3 {
+    position: absolute;
+    width: 314px;
+    height: 576px;
+    left: 746px;
+    top: 390px;
+    /* Inside auto layout */
+    flex: none;
+    order: 21;
+    flex-grow: 0;
+    z-index: 21;
+}
+
+/* talladega-nights-the-ballad-of-ricky-bobby-globe-photos 2 */
+.photo2 {
+    position: absolute;
+    width: 313px;
+    height: 489px;
+    left: calc(50% - 313px/2 + 182.5px);
+    top: calc(50% - 489px/2 + 122.5px);
+    background: url(talladega-nights-the-ballad-of-ricky-bobby-globe-photos.jpg);
+}
+
+/* Rectangle 25 */
+.rectangle25 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 + 182.5px);
+    top: calc(50% - 39px/2 + 386.5px);
+    border: 5px solid #FFE196;
+}
+
+/* Button time3 */
+.button-time3 {
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: 747px;
+    top: 927px;
+    /* Inside auto layout */
+    flex: none;
+    order: 22;
+    flex-grow: 0;
+    z-index: 22;
+}
+
+/* Rectangle 29 */
+.rectangle29 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: calc(50% - 313px/2 + 183.5px);
+    top: calc(50% - 39px/2 + 434.5px);
+    border: 5px solid #A00E0E;
+}
+
+/* 18:30 */
+.time3 {
+    position: absolute;
+    width: 59px;
+    height: 29px;
+    left: calc(50% - 59px/2 + 171.5px);
+    top: calc(50% - 29px/2 + 434.5px);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+    /* Inside auto layout */
+    flex: none;
+    order: 23;
+    flex-grow: 0;
+    z-index: 23;
+}
+
+/* Tidspunkter 2 */
+.tidspunkter2 {
+    position: absolute;
+    width: 145px;
+    height: 29px;
+    left: calc(50% - 145px/2 + 529.5px);
+    top: calc(50% - 29px/2 + 386.5px);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+    /* Inside auto layout */
+    flex: none;
+    order: 24;
+    flex-grow: 0;
+    z-index: 24;
+}
+
+/* Tidspunkter 3 */
+.tidspunkter3 {
+    position: absolute;
+    width: 145px;
+    height: 29px;
+    left: calc(50% - 145px/2 + 529.5px);
+    top: calc(50% - 29px/2 + 386.5px);
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5F5F5;
+    /* Inside auto layout */
+    flex: none;
+    order: 25;
+    flex-grow: 0;
+    z-index: 25;
+}
+
+/* Button all days */
+.button
+
+
+
+
+
+
