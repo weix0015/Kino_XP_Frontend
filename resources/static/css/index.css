@@ -1,5 +1,26 @@
 /* Login Styles */
+body {
+    background-color: #4B4B4B;
+}
 
+.date{
+    font-family: "Montserrat Alternates";
+    font-size: 40px;
+}
+.dateContainer{
+    flex: fit-content;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    isolation: isolate;
+    position: absolute;
+    min-width: 1300px;
+    height: 800px;
+    left: 14px;
+    top: 400px;
+
+
+}
 /* Button Login */
 .login-button {
     width: 57px;
@@ -18,10 +39,11 @@
 
 /* Rectangle 17 */
 .rectangle17 {
+    display: flex;
     box-sizing: border-box;
     position: absolute;
-    width: 148px;
-    height: 139px;
+    width: 160px;
+    height: 145px;
     left: calc(50% - 148px/2 + 44px);
     top: calc(50% - 139px/2 - 216.5px);
     border: 5px solid #FFE296;
@@ -34,10 +56,11 @@
 
 /* Rectangle 18 */
 .rectangle18 {
+    display: flex;
     box-sizing: border-box;
     position: absolute;
-    width: 148px;
-    height: 139px;
+    width: 160px;
+    height: 145px;
     left: calc(50% - 148px/2 + 214px);
     top: calc(50% - 139px/2 - 216.5px);
     border: 5px solid #FFE296;
@@ -50,10 +73,11 @@
 
 /* Rectangle 19 */
 .rectangle19 {
+    display: flex;
     box-sizing: border-box;
     position: absolute;
-    width: 148px;
-    height: 139px;
+    width: 160px;
+    height: 145px;
     left: calc(50% - 148px/2 + 384px);
     top: calc(50% - 139px/2 - 216.5px);
     border: 5px solid #FFE296;
@@ -66,10 +90,11 @@
 
 /* Rectangle 20 */
 .rectangle20 {
+    display: flex;
     box-sizing: border-box;
     position: absolute;
-    width: 148px;
-    height: 139px;
+    width: 160px;
+    height: 145px;
     left: calc(50% - 148px/2 + 554px);
     top: calc(50% - 139px/2 - 216.5px);
     border: 5px solid #FFE296;
@@ -84,8 +109,8 @@
 .rectangle22 {
     box-sizing: border-box;
     position: absolute;
-    width: 313px;
-    height: 39px;
+    width: 160px;
+    height: 145px;
     left: calc(50% - 313px/2 - 549.5px);
     top: calc(50% - 39px/2 + 386.5px);
     border: 5px solid #FFE196;
@@ -98,6 +123,8 @@
 
 /* Rectangle 30 */
 .rectangle30 {
+    display: flex;
+
     box-sizing: border-box;
     position: absolute;
     width: 313px;
