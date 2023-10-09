@@ -60,15 +60,19 @@ body {
     gap: 10px; /* Gap between seats */
 }
 
-.seat {
-    width: 30px; /* Adjust the seat width as needed */
-    height: 30px; /* Adjust the seat height as needed */
-    background-image: url('../image/booking/seat.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+.fa-square {
+    width: 30px;
+    height: 30px;
+    color: #00FF95;
+
 }
 
-.seat:hover {
+.fa-square:hover {
     color: #FFE296;
+}
+
+.blue {
+    color: #009dff;
+    cursor: pointer;
 }
 
