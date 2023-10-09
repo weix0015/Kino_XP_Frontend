@@ -32,7 +32,7 @@ body {
     color: #4B4B4B;
 }
 
-.rammeTop {
+.frameTop {
     background: url("images/logo.png") center center no-repeat;
     background-size: 300px 150px;
     width: 97rem;
@@ -43,7 +43,7 @@ body {
     left: 20px;
 }
 
-.lillaMenu {
+.purpleMenu {
     width: 98rem;
     height: 40px;
     background-color: #b483cb;
