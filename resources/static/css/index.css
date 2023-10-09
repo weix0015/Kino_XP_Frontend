@@ -157,7 +157,12 @@ body {
 }
 
 
-
+.movieList{
+    position: absolute;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: row;
+}
 
 
 

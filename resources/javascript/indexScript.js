@@ -1,9 +1,9 @@
 getMovies();
 let movies= []
-
+getMoviePoster()
 
 function getMovies(){
-    fetch("http://localhost:8080/Kino_XP/index")
+    fetch("http://localhost:8080/index")
     .then(response => response.json())
     .then(data => {
         const movieList = document.getElementById("movieList");
@@ -25,4 +25,20 @@ function getMovies(){
     .catch(error => {
         console.error("An error occurred:", error);
     });
+}
+
+function getMoviePoster(title) {
+    // Erstat 'title' med den faktiske titel, du ønsker at søge efter
+    const apiUrl = `http://localhost:8080/movie-poster?title=${encodeURIComponent("The Matrix")}`;
+
+    fetch(apiUrl)
+        .then(response => response.text()) // eller response.json(), afhængigt af API'ets svarformat
+        .then(data => {
+            // 'data' indeholder svar fra din backend (f.eks. OMDB API-svaret)
+            console.log("OMDB API Response:", data);
+            // Behandle API-svaret her
+        })
+        .catch(error => {
+            console.error("An error occurred:", error);
+        });
 }
