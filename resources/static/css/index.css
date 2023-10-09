@@ -116,37 +116,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     top: 220px;
 }
 
+.datoKnapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 220px;
+}
+/*
 .datoKnap1{
-    left: 35px;
+    margin-left: 35px;
 }
 
 .datoknap2{
-    left: 180px;
+    margin-left: 180px;
 }
 
 .datoknap3{
-    left: 325px;
+    margin-left: 325px;
 }
 
 .datoknap4{
-    left: 470px;
+    margin-left: 470px;
 }
 
 .datoKnap5{
-    left: 615px;
+    margin-left: 615px;
 }
 
 .datoKnap6{
-    left: 760px;
+    margin-left: 760px;
 }
 
 .datoKnap7{
-    left: 905px;
+    margin-left: 905px;
 }
+
+
+ */
 
 
 
