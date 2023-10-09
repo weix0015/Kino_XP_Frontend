@@ -1,44 +1,41 @@
-/* booking.css */
 body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     height: 60vh;
-    margin-left: 690px;
+    margin-left: 50%;
     flex-direction: column;
     background-color: #4B4B4B;
 }
 
 .container {
     position: absolute;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #4B4B4B;
     text-align: center;
-    left: 100px;
+    right: 60%;
+    top: 10%;
 }
 
 .movie-title {
+    font-family: 'Montserrat', extrabold, sans-serif;
     font-size: 24px;
     margin: 0;
 }
 
 .date-time {
+    font-family: 'Montserrat', alter, sans-serif;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 1%;
 }
 
 .movie-image {
-    margin-top: 20px;
+    margin-top: 1%;
 }
 
-/* Style the movie image */
 .movie {
-    max-width: 200px; /* Adjust the max-width as needed */
+    max-width: 40%;
     display: block;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto;
 }
 
 .choose-seat-text {
@@ -48,31 +45,27 @@ body {
 .cinema {
     position: absolute;
     display: flex;
-    top: 30px;
+    top: 10%;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Gap between rows */
 }
 
 .row {
     display: flex;
     align-items: center;
-    gap: 10px; /* Gap between seats */
+    gap: 2%;
 }
 
 .fa-square {
-    width: 30px;
-    height: 30px;
-    color: #00FF95;
-
-}
-
-.fa-square:hover {
-    color: #FFE296;
+    color: transparent;
+    outline: 2px solid #FFE296;
+    margin: 1%;
 }
 
 .blue {
-    color: #009dff;
+    color: #FFE296;
+    background-color: #FFE296;
+    outline: 2px solid #F5F5F5;
     cursor: pointer;
 }
 
