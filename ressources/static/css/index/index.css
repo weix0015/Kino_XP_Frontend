@@ -85,7 +85,7 @@ body {
 }
 
 .frameTop {
-    background: url("images/logo.png") center center no-repeat;
+    background: url("../../../../resources/static/css/images/logo.png") center center no-repeat;
     background-size: 300px 150px;
     width: 97rem;
     height: 100px;
