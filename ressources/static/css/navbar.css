@@ -1,0 +1,71 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 21%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.search-bar {
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.search-button {
+    padding: 8px;
+    background-color: #ffe296;
+    color: #fff;
+    border: 1px solid #b483cb;
+    cursor: pointer;
+}
+
+/* Button time1 */
+.button-time1 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    color: #FFFFFF;
+    background-color: transparent;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 20px;
+    padding: 10px;
+    gap: 10px;
+    isolation: isolate;
+    position: absolute;
+    width: 313px;
+    height: 39px;
+    left: 14px;
+    top: 927px;
+    border: 5px solid #A00E0E;
+    justify-content: center;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 16;
+    flex-grow: 0;
+    z-index: 16;
+}
+
+.frameTop {
+    background: url("../image/booking/logo.png") center center no-repeat;
+    background-size: 300px 150px;
+    width: 97rem;
+    height: 100px;
+    border: 8px solid #ffe296;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.purpleMenu {
+    width: 98rem;
+    height: 40px;
+    background-color: #b483cb;
+    position: relative;
+    top: 35px;
+    left: 20px;
+}
