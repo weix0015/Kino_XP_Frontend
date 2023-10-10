@@ -1,0 +1,23 @@
+body {
+    background-color: #4B4B4B!important;
+}
+
+.frameTop {
+    background: url(".../resources/image/logo.png") center center no-repeat;
+    background-size: 300px 150px;
+    width: 97rem;
+    height: 100px;
+    border: 8px solid #ffe296;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.purpleMenu {
+    width: 98rem;
+    height: 40px;
+    background-color: #b483cb;
+    position: relative;
+    top: 35px;
+    left: 20px;
+}
