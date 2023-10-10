@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', function () {
+  let loginButton = document.querySelector('.login-button');
+  let loginModal = document.getElementById('login-modal');
+  let modal = new bootstrap.Modal(loginModal);
+
+  loginButton.addEventListener('click', function () {
+    modal.show();
+  })
+})
+
 const seatContainer = document.getElementById('seat-container');
 
 const numRows = 20;

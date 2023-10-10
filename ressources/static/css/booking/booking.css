@@ -58,6 +58,11 @@ body {
     color: #FFE296;
 }
 
+.modal-content {
+    top: 50%;
+    left: 20%;
+}
+
 .container {
     position: absolute;
     background-color: #4B4B4B;
