@@ -1,6 +1,6 @@
 
 body {
-    background-color: #4B4B4B;
+    background-color: #4B4B4B!important;
 }
 
 
@@ -172,6 +172,27 @@ body {
     border: 5px solid #FFFFFF;
 }
 
+
+.movie-card {
+    display: inline-block; /* Vis filmkortene ved siden af hinanden */
+    margin: 10px; /* Tilføj lidt afstand mellem kortene */
+    max-width: 400px; /* Indstil den maksimale bredde for filmkortet */
+    text-align: center; /* Centrer indholdet af kortet */
+}
+
+/* CSS-regler for movie-poster billederne */
+.movie-poster {
+    max-width: 100%; /* Skaleres billedet for at passe inden for kortets bredde */
+    height: auto;/* Bevar billedets proportioner */
+
+}
+
+.movie-headline{
+    color: #FFFFFF;
+    font-size: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 650;
+}
 
 
 
