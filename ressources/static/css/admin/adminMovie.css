@@ -81,31 +81,27 @@ body {
 }
 
 
-
-.movieList{
-    position: absolute;
-    margin-top: 10rem;
-    display: flex;
-    flex-direction: row;
-}
-
 table {
+    font-family: "Montserrat Alternates", serif;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
 thead {
+    font-family: "Montserrat Alternates", serif;
     background-color: #4B4B4B;
 }
 
 th, td {
+    font-family: "Montserrat Alternates", serif;
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
+    font-family: "Montserrat Alternates", serif;
     background-color: #4B4B4B;
 }
 
