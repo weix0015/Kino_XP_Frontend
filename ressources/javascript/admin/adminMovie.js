@@ -1,6 +1,14 @@
-// Function to fetch data from the backend and populate the table
+
+function createButton(text, className, clickHandler) {
+    const button = document.createElement("button");
+    button.textContent = text;
+    button.className = className;
+    button.addEventListener("click", clickHandler);
+    return button;
+}
+
 function fetchDataAndPopulateTable() {
-    fetch("URL_TIL_DIN_BACKEND_ENDPOINT") // Erstat med den faktiske URL til din backend-endpoint
+    fetch("http://localhost:8080/movies")
         .then(response => response.json())
         .then(data => {
             const movieTableBody = document.getElementById("movieTableBody");
@@ -9,6 +17,7 @@ function fetchDataAndPopulateTable() {
             data.forEach(movie => {
                 const row = document.createElement("tr");
 
+                // Datakolonner
                 const titleCell = document.createElement("td");
                 titleCell.textContent = movie.title;
                 row.appendChild(titleCell);
@@ -33,6 +42,32 @@ function fetchDataAndPopulateTable() {
                 posterUrlCell.appendChild(posterImage);
                 row.appendChild(posterUrlCell);
 
+                // Knapperkolonne
+                const buttonsCell = document.createElement("td");
+
+                // Opret "Gem" knap med en click-handler
+                const saveButton = createButton("Gem", "save-button", () => {
+                    // Implementer din "Gem" logik her, f.eks. ved at kalde din backend
+                    console.log("Gem blev klikket for film med ID: " + movie.id);
+                });
+                buttonsCell.appendChild(saveButton);
+
+                // Opret "Slet" knap med en click-handler
+                const deleteButton = createButton("Slet", "delete-button", () => {
+                    // Implementer din "Slet" logik her, f.eks. ved at kalde din backend
+                    console.log("Slet blev klikket for film med ID: " + movie.id);
+                });
+                buttonsCell.appendChild(deleteButton);
+
+                // Opret "Rediger" knap med en click-handler
+                const editButton = createButton("Rediger", "edit-button", () => {
+                    // Implementer din "Rediger" logik her, f.eks. ved at omdirigere til en redigeringsformular
+                    console.log("Rediger blev klikket for film med ID: " + movie.id);
+                });
+                buttonsCell.appendChild(editButton);
+
+                row.appendChild(buttonsCell);
+
                 movieTableBody.appendChild(row);
             });
         })
@@ -41,5 +76,4 @@ function fetchDataAndPopulateTable() {
         });
 }
 
-// Kald funktionen for at hente og udfylde tabellen, når siden indlæses
-window.onload = fetchDataAndPopulateTable;
+window.onload = fetchDataAndPopulateTable();

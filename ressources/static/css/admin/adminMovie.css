@@ -61,7 +61,7 @@ body {
 }
 
 .frameTop {
-    background: url("ressources/static/image/logo.png") center center no-repeat;
+    background: url("/ressources/static/image/logo.png") center center no-repeat;
     background-size: 300px 150px;
     width: 97rem;
     height: 100px;
@@ -110,7 +110,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-    background-color: #ddd;
+    background-color: #A00E0E;
 }
 
 img {
