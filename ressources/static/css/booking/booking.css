@@ -88,10 +88,6 @@ body {
     margin: 0 auto;
 }
 
-.choose-seat-text {
-    font-size: 18px;
-}
-
 .cinema {
     position: absolute;
     display: flex;
