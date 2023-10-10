@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../../ressources/static/css/booking/booking.css">
 </head>
 <body>
+<div class="top-banner">
+    <img class="logo" src="../../ressources/static/image/booking/logo.png" alt="Logo">
+<div class="purpleMenu">
+    <button class="login-button">Login</button>
+</div>
+</div>
 <div class="container">
     <div class="top-title">
         <h1 class="movie-title">
@@ -18,7 +24,7 @@
         </h1>
     </div>
     <div class="movie-image">
-        <img class="movie" src="../../ressources/static/image/booking/movie.jpg">
+        <img class="movie" src="../../ressources/static/image/booking/movie.jpg" alt="Movie">
     </div>
     <div class="choose-seat">
         <h1 class="choose-seat-text">
@@ -31,6 +37,8 @@
         <div id="seat-container"></div>
     </div>
 </div>
-<script src="../../ressources/javascript/booking/booking.js"></script>
+<script src="../../ressources/javascript/booking/booking.js">
+    window.onload = pageLoad();
+</script>
 </body>
 </html>

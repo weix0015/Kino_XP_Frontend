@@ -16,8 +16,37 @@ for (let row = 0; row < numRows; row++) {
   seatContainer.appendChild(rowElement);
 }
 
+function pageLoad() {
+  const responseEntities = [];
+  const fetchAndStoreResponse = async (url) => {
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      responseEntities.push(data);
+    } catch (error) {
+      console.error(`Error fetching ${url}: ${error.message}`);
+    }
+  }
+
+  const fetchPromises = urls.map(fetchAndStoreResponse);
+
+  Promise.all(fetchPromises)
+    .then(() => {
+      console.log('All requests have been completed.')
+      console.log('Response entities:', responseEntities)
+    })
+    .catch((error) => {
+      console.error('Error fetching one or more URLs:', error)
+    });
+}
+
+
 function toggleSeatColor(event) {
-  event.target.classList.toggle('blue');
+  event.target.classList.toggle('changeColorOnClick');
 }
 
 const seats = document.querySelectorAll('.fa-square');
