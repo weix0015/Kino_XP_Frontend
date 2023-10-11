@@ -1,74 +1,29 @@
 body {
+    background-color: #4B4B4B!important;
+
+}
+.frameTop {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 60vh;
-    margin-left: 50%;
-    flex-direction: column;
-    background-color: #4B4B4B;
-    overflow-x: hidden;
+    padding-bottom: 1%;
+    width: 100%;
 }
-
-.top-banner {
-    position: relative;
-    background-size: 300px 150px;
-    width: 97rem;
-    height: 100px;
-    border: 8px solid #FFE296;
-    top: -35%;
-    left: -100%;
-}
-
-.logo {
-    position: absolute;
-    max-width: 150%;
-    max-height: 150%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-}
-
 .purpleMenu {
-    position: relative;
-    width: 98rem;
+    margin-bottom: 10%;
+    width: 100%;
     height: 40px;
     background-color: #B483CB;
     top: 120%;
     left: -0.5%;
 }
 
-.login-button {
-    position: relative;
-    font-family: "Montserrat Alternates";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    color: #FFFFFF;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    background-color: transparent;
-    border: none;
-}
-
-.login-button:hover {
-    color: #FFE296;
-}
-
-.modal-content {
-    top: 50%;
-    left: 20%;
-}
-
-.container {
+.movieInfo {
     position: absolute;
     background-color: #4B4B4B;
     text-align: center;
     right: 60%;
     top: 30%;
+    z-index: -1;
+
 }
 
 .movie-title {
@@ -85,6 +40,7 @@ body {
 
 .movie-image {
     margin-top: 1%;
+    width: fit-content;
 }
 
 .movie {
@@ -94,11 +50,11 @@ body {
 }
 
 .cinema {
-    position: absolute;
     display: flex;
-    top: 30%;
+    top: 40%;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
 }
 
 .row {
