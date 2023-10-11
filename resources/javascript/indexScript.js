@@ -1,4 +1,3 @@
-const login = "http://localhost:8080/login";
 getMovies();
 let movies = [];
 
