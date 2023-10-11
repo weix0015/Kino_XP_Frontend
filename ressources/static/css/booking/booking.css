@@ -1,19 +1,6 @@
 body {
-    background-color: #4B4B4B!important;
-
-}
-.frameTop {
-    display: flex;
-    padding-bottom: 1%;
-    width: 100%;
-}
-.purpleMenu {
-    margin-bottom: 10%;
-    width: 100%;
-    height: 40px;
-    background-color: #B483CB;
-    top: 120%;
-    left: -0.5%;
+    background-color: #4B4B4B !important;
+    overflow-x: hidden;
 }
 
 .movieInfo {
@@ -23,7 +10,6 @@ body {
     right: 60%;
     top: 30%;
     z-index: -1;
-
 }
 
 .movie-title {
@@ -49,8 +35,39 @@ body {
     margin: 0 auto;
 }
 
+.ticketAmount {
+    display: flex;
+    justify-content: left;
+}
+
+#amountLabel {
+    color: #F5F5F5;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 20px;
+}
+
+#amount {
+    background-color: #4B4B4B;
+    margin-top: 5%;
+    color: #F5F5F5;
+}
+
+.buy {
+    margin-left: 10%;
+    border: transparent;
+    background: transparent;
+    font-size: 20px;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: #F5F5F5;
+}
+
+.buy:hover {
+    color: #FFE296;
+}
+
 .cinema {
     display: flex;
+    margin-top: 5%;
     top: 40%;
     flex-direction: column;
     align-items: center;
@@ -60,6 +77,8 @@ body {
 .row {
     display: flex;
     align-items: center;
+    margin-top: 1%;
+    margin-left: -5%;
     gap: 2%;
 }
 
