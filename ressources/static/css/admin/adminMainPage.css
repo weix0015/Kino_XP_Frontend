@@ -4,22 +4,21 @@ body {
 
 .frameTop {
     background: url(".../ressources/image/logo.png") center center no-repeat;
-    background-size: 300px 150px;
-    width: 97rem;
-    height: 100px;
+    background-size: 100% 10%;
+    width: 95%;
+    height: 8rem;
     border: 8px solid #ffe296;
     position: relative;
-    top: 20px;
-    left: 20px;
+    top: 10%;
+    left: 2%;
 }
 
 .purpleMenu {
-    width: 98rem;
-    height: 40px;
+    width: 96.1%;
+    height: 2rem;
     background-color: #b483cb;
     position: relative;
-    top: 35px;
-    left: 20px;
+    left: 2%;
 }
 
 .login-button {
@@ -27,13 +26,12 @@ body {
     font-family: "Montserrat Alternates";
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 150%;
     color: #FFFFFF;
     position: absolute;
-    top: 1px;
-    left: 70px;
-    /*transform: translate(-50%, -50%); */
-    padding: 10px;
+    left: 10%;
+    transform: translate(20%, -40%);
+    padding: 5%;
     background-color: transparent;
     border: none;
 }
@@ -43,42 +41,123 @@ body {
 }
 
 .option {
-    width: 40%;
-    height: 20%;
-    border: 0.5rem solid #ffe296;
+    width: 50%;
+    height: 5rem;
+    border: 0.3rem solid #ffe296;
     background-color: transparent;
     color: #FFFFFF;
-    font-size: 100%;
+    font-size: 150%;
     font-family: "Montserrat", sans-serif;
-    font-weight: 650;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5% auto; /* Adjusted percentage margin for spacing between buttons */
+    margin: 5% 10%;
 }
 
-.options{
+.options {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     top: 50%;
-}
+    margin-top:5%;
 
+}
 
 
 .movieButton1, .movieButton2, .movieButton3 {
-    margin: 5% 0; /* Adjusted percentage margin for spacing between buttons */
+    margin: 0.1% 5% 5% 5%;
 }
 
-.movieButton2 {
-    margin-top: auto; /* Push to the middle */
-}
 
 .option:hover {
     background-color: #ffe296;
     color: #FFFFFF;
     border: 5px solid #FFFFFF;
+}
+
+/* Hamburger menu */
+.hamburger1 {
+    height: 4.5rem; /* Converted from 45px */
+    margin: 1rem; /* Converted from 10px */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 120;
+}
+
+.hamburger1 div {
+    background-color: #FFE296;
+    position: relative;
+    width: 4rem; /* Converted from 40px */
+    height: 0.5rem; /* Converted from 5px */
+    margin: 0.5rem 0; /* Added some margin for spacing */
+    transition: all 0.2s ease-in-out;
+}
+
+#toggle1 {
+    display: none;
+}
+
+#toggle1:checked + .hamburger1 .top {
+    transform: rotate(-45deg);
+    margin-top: 0rem; /* Converted from 22.5px */
+}
+
+#toggle1:checked + .hamburger1 .meat {
+    transform: rotate(45deg);
+    margin-top: 0rem; /* Converted from -5px */
+}
+
+#toggle1:checked + .hamburger1 .bottom {
+    transform: scale(0);
+}
+
+#toggle1:checked ~ .menu1 {
+    height: 34rem; /* Converted from 340px */
+    z-index: 121;
+}
+
+/* Menu from the hamburger */
+.menu1 {
+    width: 100%;
+    background-color: #b483cb;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+    clear: both;
+    width: auto;
+    text-align: center;
+    height: 0rem; /* Converted from 0px */
+    overflow: hidden;
+    transition: height 0.4s ease;
+    z-index: 120;
+    transition: all 0.3s ease;
+}
+
+.menu1 a:first-child {
+    margin-top: 4rem; /* Converted from 40px */
+}
+
+.menu1 a:last-child {
+    margin-bottom: 4rem; /* Converted from 40px */
+}
+
+.link1 {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0; /* Converted from 10px */
+    font: 700 2rem 'Oswald', sans-serif; /* Converted from 20px */
+}
+
+.link1:hover {
+    background-color: #fff;
+    color: #4B4B4B;
+    transition: all 0.3s ease;
 }
