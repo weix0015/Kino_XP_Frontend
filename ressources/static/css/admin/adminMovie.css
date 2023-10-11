@@ -61,7 +61,7 @@ body {
 }
 
 .frameTop {
-    background: url("/ressources/static/image/logo.png") center center no-repeat;
+    background: url("ressources/static/image/logo.png") center center no-repeat;
     background-size: 300px 150px;
     width: 97rem;
     height: 100px;
@@ -91,6 +91,7 @@ table {
 thead {
     font-family: "Montserrat Alternates", serif;
     background-color: #4B4B4B;
+    color: #FFFFFF;
 }
 
 th, td {
@@ -98,6 +99,7 @@ th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    color: #FFFFFF;
 }
 
 tr:nth-child(even) {
