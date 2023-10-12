@@ -1,5 +1,5 @@
 body {
-    background-image: url("../images/cinema.jpg");
+    background-image: url("../image/cinema.jpg");
     background-size: cover;
     background-position: center;
     margin: 0;
@@ -21,7 +21,7 @@ body {
 }
 
 .border {
-    background-image: url("../images/logo.png");
+    background-image: url("../image/logo.png");
     background-repeat: no-repeat;
     background-position: top center;
     background-size: contain;
