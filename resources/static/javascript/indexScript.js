@@ -22,7 +22,7 @@ function getMovies() {
                 const showtimesContainer = document.createElement("div");
                 showtimesContainer.className = "showtimes-container";
                 console.log(movie.viewing);
-                if (movie.viewing !== null) {
+                if (movie.viewing == !null) {
                     // Hent tidspunkter fra viewing-objekterne for denne film
                     movie.viewing.forEach(viewing => {
                         const showtimeButton = document.createElement("button");
