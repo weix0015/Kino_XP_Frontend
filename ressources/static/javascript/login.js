@@ -1,9 +1,9 @@
 const login = "http://localhost:8080/login";
-const loginForm=document.getElementById("loginForm")
-loginForm.addEventListener("submit",(event)=>{
-    event.preventDefault();
-    performLogin();
-})
+const openModalButton = document.getElementById("login-button");
+const myModal = new bootstrap.Modal(document.getElementById('login-modal'));
+openModalButton.addEventListener("click", () => {
+    myModal.show();
+});
 // Function to perform login
 function performLogin() {
     const email = document.getElementById("email").value;
@@ -29,7 +29,7 @@ function performLogin() {
             if (response.ok) {
                 // Successful login, you can handle it here
                 console.log("Login successful");
-                window.location.href="../templates.Home/index.html";
+                myModal.hide();
             } else {
                 // Handle login failure, display an error message or take appropriate action
                 console.error("Login failed, Please try again");

@@ -70,7 +70,7 @@ body {
     gap: 10px;
     isolation: isolate;
     position: absolute;
-    width: 313px;
+    width: 100%;
     height: 39px;
     left: 14px;
     top: 927px;
@@ -85,9 +85,9 @@ body {
 }
 
 .frameTop {
-    background: url("images/logo.png") center center no-repeat;
+    background: url("../../image/logo.png") center center no-repeat;
     background-size: 300px 150px;
-    width: 97rem;
+    width: 100%;
     height: 100px;
     border: 8px solid #ffe296;
     position: relative;
@@ -96,7 +96,7 @@ body {
 }
 
 .purpleMenu {
-    width: 98rem;
+    width: 100%;
     height: 40px;
     background-color: #b483cb;
     position: relative;
@@ -193,10 +193,3 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 650;
 }
-
-
-
-
-
-
-

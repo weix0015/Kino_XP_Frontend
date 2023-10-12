@@ -1,0 +1,98 @@
+body {
+    background-color: #4B4B4B !important;
+    overflow-x: hidden;
+}
+
+.movieInfo {
+    position: absolute;
+    background-color: #4B4B4B;
+    text-align: center;
+    right: 60%;
+    top: 30%;
+    z-index: -1;
+}
+
+.movie-title {
+    font-family: 'Montserrat', extrabold, sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.date-time {
+    font-family: 'Montserrat', alter, sans-serif;
+    font-size: 18px;
+    margin-top: 1%;
+}
+
+.movie-image {
+    margin-top: 1%;
+    width: fit-content;
+}
+
+.movie {
+    max-width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+
+.ticketAmount {
+    display: flex;
+    justify-content: left;
+}
+
+#amountLabel {
+    color: #F5F5F5;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 20px;
+}
+
+#amount {
+    background-color: #4B4B4B;
+    margin-top: 5%;
+    color: #F5F5F5;
+}
+
+.buy {
+    margin-left: 10%;
+    border: transparent;
+    background: transparent;
+    font-size: 20px;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: #F5F5F5;
+}
+
+.buy:hover {
+    color: #FFE296;
+}
+
+.cinema {
+    display: flex;
+    margin-top: 5%;
+    top: 40%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: -5%;
+    gap: 2%;
+}
+
+.fa-square {
+    color: transparent;
+    outline: 2px solid #FFE296;
+    margin: 1%;
+}
+
+/* on click color change */
+.changeColorOnClick {
+    color: #FFE296;
+    background-color: #FFE296;
+    outline: 2px solid #F5F5F5;
+    cursor: pointer;
+}
+
