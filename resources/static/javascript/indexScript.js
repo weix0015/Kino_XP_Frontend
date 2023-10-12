@@ -1,6 +1,5 @@
 const login = "http://localhost:8080/login";
 getMovies();
-let movies = [];
 
 function getMovies() {
     fetch("http://localhost:8080/movies")
@@ -23,7 +22,7 @@ function getMovies() {
                 const showtimesContainer = document.createElement("div");
                 showtimesContainer.className = "showtimes-container";
                 console.log(movie.viewing);
-                if (movie.viewing && Array.isArray(movie.viewing)) {
+                if (movie.viewing !== null) {
                     // Hent tidspunkter fra viewing-objekterne for denne film
                     movie.viewing.forEach(viewing => {
                         const showtimeButton = document.createElement("button");
