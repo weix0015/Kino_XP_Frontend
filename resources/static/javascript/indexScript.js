@@ -2,38 +2,30 @@ const login = "http://localhost:8080/login";
 getMovies();
 let movies = [];
 
-function getMovies(){
+function getMovies() {
     fetch("http://localhost:8080/movies")
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
+            const movieList = document.getElementById("movieList");
+            data.forEach(movie => {
+                const movieCard = document.createElement("div");
+                movieCard.className = "movie-card";
 
-        let movies = []
-        getMovies()
+                const moviePoster = document.createElement("img");
+                moviePoster.src = movie.posterUrl;
+                moviePoster.className = "movie-poster";
+                movieCard.appendChild(moviePoster);
 
-        async function getMovies() {
-            try {
-                const response = await fetch("http://localhost:8080/movies");
-                const data = await response.json();
+                const movieTitle = document.createElement("h2");
+                movieTitle.textContent = movie.title;
+                movieCard.appendChild(movieTitle);
 
-                const movieList = document.getElementById("movieList");
-                data.forEach(movie => {
-                    const movieCard = document.createElement("div");
-                    movieCard.className = "movie-card";
+                const showtimesContainer = document.createElement("div");
+                showtimesContainer.className = "showtimes-container";
 
-                    const moviePoster = document.createElement("img");
-                    moviePoster.src = movie.posterUrl;
-                    moviePoster.className = "movie-poster";
-                    movieCard.appendChild(moviePoster);
-
-                    const movieTitle = document.createElement("h2");
-                    movieTitle.textContent = movie.title;
-                    movieCard.appendChild(movieTitle);
-
-                    const showtimesContainer = document.createElement("div");
-                    showtimesContainer.className = "showtimes-container";
-
+                if (movie.viewing && Array.isArray(movie.viewing)) {
                     // Hent tidspunkter fra viewing-objekterne for denne film
-                    movie.viewings.forEach(viewing => {
+                    movie.viewing.forEach(viewing => {
                         const showtimeButton = document.createElement("button");
                         showtimeButton.className = "time-button";
                         showtimeButton.textContent = viewing.showTime;
@@ -43,15 +35,18 @@ function getMovies(){
                         });
                         showtimesContainer.appendChild(showtimeButton);
                     });
+                } else {
+                    // Håndter tilfælde, hvor movie.viewing ikke er defineret eller ikke en array
+                    console.error("Movie viewing information is missing or not in the expected format for " + movie.title);
+                }
 
-                    movieCard.appendChild(showtimesContainer);
-                    movieList.appendChild(movieCard);
-                });
-            } catch (error) {
-                console.error("An error occurred:", error);
-            }
-        }
-    })
+                movieCard.appendChild(showtimesContainer);
+                movieList.appendChild(movieCard);
+            });
+        })
+        .catch(error => {
+            console.error("An error occurred:", error);
+        });
 }
 /*
 async function getMovies() {
