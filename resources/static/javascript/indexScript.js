@@ -22,7 +22,7 @@ function getMovies() {
 
                 const showtimesContainer = document.createElement("div");
                 showtimesContainer.className = "showtimes-container";
-
+                console.log(movie.viewing);
                 if (movie.viewing && Array.isArray(movie.viewing)) {
                     // Hent tidspunkter fra viewing-objekterne for denne film
                     movie.viewing.forEach(viewing => {
@@ -31,13 +31,16 @@ function getMovies() {
                         showtimeButton.textContent = viewing.showTime;
                         showtimeButton.addEventListener("click", function (event) {
                             event.preventDefault();
-                            // Her kan du håndtere, hvad der skal ske, når en tid klikkes, f.eks. omdirigere til booking siden
+                            // Her kan du håndtere, hvad der skal ske, når en tid klikkes, f.eks. omdirigere til bookingsiden
                         });
                         showtimesContainer.appendChild(showtimeButton);
                     });
                 } else {
-                    // Håndter tilfælde, hvor movie.viewing ikke er defineret eller ikke en array
-                    console.error("Movie viewing information is missing or not in the expected format for " + movie.title);
+                    const errorMessage = document.createElement("p");
+                    errorMessage.textContent = "Movie viewing information is missing or not in the expected format for " + movie.title;
+                    console.log(movie)
+                    console.log(movie.viewing)
+                    showtimesContainer.appendChild(errorMessage);
                 }
 
                 movieCard.appendChild(showtimesContainer);
