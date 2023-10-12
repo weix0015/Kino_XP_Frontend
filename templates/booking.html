@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css">
+    <link rel="stylesheet" href="../ressources/static/css/booking.css">
+    <link rel="stylesheet" href="../ressources/static/css/navbar.css">
+    <link rel="stylesheet" href="../ressources/static/css/login.css">
+</head>
+<body>
+    <div class="frameTop">
+        <div class="purpleMenu">
+            <button onclick="window.location.href='login.html'" id="login-button" class="login-button">Login</button>
+        </div>
+    </div>
+    <div class="movieInfo">
+        <div class="top-title">
+            <h1 class="movie-title">
+                AMERICAN GANGSTER
+            </h1>
+            <h1 class="date-time">
+                Monday 09. October at 1:00 PM
+            </h1>
+        </div>
+        <div class="movie-image">
+            <img class="movie" src="../ressources/static/image/movie.jpg" alt="Movie">
+        </div>
+
+    </div>
+
+    <div class="cinema">
+        <div class="ticketAmount">
+            <label id="amountLabel" for="amount">How many tickets?</label>
+            <input type="number" id="amount" min="0" value="0">
+            <button class="buy" id="buy-tickets" type="submit" onclick="buyTickets()">Buy tickets</button>
+        </div>
+        <div class="row">
+            <div id="seat-container"></div>
+        </div>
+    </div>
+    <script src="../ressources/static/javascript/booking.js">
+        window.onload = pageLoad();
+    </script>
+    <script src="../ressources/static/javascript/login.js"></script>
+
+</body>
+</html>

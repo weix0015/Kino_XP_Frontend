@@ -61,7 +61,7 @@ body {
 }
 
 .frameTop {
-    background: url("../../image/logo.png") center center no-repeat;
+    background: url("../image/logo.png") center center no-repeat;
     background-size: 15% auto;
     width: 97rem;
     height: 100px;
