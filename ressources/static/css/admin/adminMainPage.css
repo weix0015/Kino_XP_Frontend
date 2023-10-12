@@ -3,8 +3,8 @@ body {
 }
 
 .frameTop {
-    background: url(".../ressources/image/logo.png") center center no-repeat;
-    background-size: 100% 10%;
+    background: url("../../image/logo.png") center center no-repeat;
+    background-size: 15% auto;
     width: 95%;
     height: 8rem;
     border: 8px solid #ffe296;
@@ -15,7 +15,7 @@ body {
 
 .purpleMenu {
     width: 96.1%;
-    height: 2rem;
+    height: 4rem;
     background-color: #b483cb;
     position: relative;
     left: 2%;
@@ -24,17 +24,18 @@ body {
 
 .login-button {
 
-    font-family: "Montserrat Alternates";
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 150%;
     color: #FFFFFF;
     position: absolute;
     left: 10%;
-    transform: translate(20%, -40%);
+    transform: translate(-60%, -35%);
     padding: 5%;
     background-color: transparent;
     border: none;
+
 }
 
 .login-button:hover{
@@ -175,10 +176,11 @@ body {
     margin: 0;
     padding: 1rem 0; /* Converted from 10px */
     font: 700 2rem 'Oswald', sans-serif; /* Converted from 20px */
+    color: #4B4B4B;
 }
 
 .link1:hover {
     background-color: #fff;
-    color: #4B4B4B;
+    color: #b483cb;
     transition: all 0.3s ease;
 }

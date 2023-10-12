@@ -8,13 +8,13 @@ body {
     border: 5px #ffe296;
     padding: 14px 28px;
     font-size: 20px;
-    font-family: "Montserrat Alternates";
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 
 .login-button {
 
-    font-family: 'Montserrat Alternates';
+    font-family: 'Montserrat Alternates', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -61,8 +61,8 @@ body {
 }
 
 .frameTop {
-    background: url("ressources/static/image/logo.png") center center no-repeat;
-    background-size: 300px 150px;
+    background: url("../../image/logo.png") center center no-repeat;
+    background-size: 15% auto;
     width: 97rem;
     height: 100px;
     border: 8px solid #ffe296;
@@ -79,7 +79,6 @@ body {
     top: 35px;
     left: 20px;
 }
-
 
 table {
     font-family: "Montserrat Alternates", serif;
