@@ -1,9 +1,9 @@
 const login = "http://localhost:8080/login";
-const openModalButton = document.getElementById("login-button");
-const myModal = new bootstrap.Modal(document.getElementById('login-modal'));
-openModalButton.addEventListener("click", () => {
-    myModal.show();
-});
+const loginForm=document.getElementById("loginForm")
+loginForm.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    performLogin();
+})
 // Function to perform login
 function performLogin() {
     const email = document.getElementById("email").value;

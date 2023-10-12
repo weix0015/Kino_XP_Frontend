@@ -5,10 +5,8 @@ function getMovies(){
     fetch("http://localhost:8080/movies")
     .then(response => response.json())
     .then(data => {
-
         let movies = []
         getMovies()
-
         async function getMovies() {
             try {
                 const response = await fetch("http://localhost:8080/movies");
