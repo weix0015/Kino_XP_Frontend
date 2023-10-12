@@ -29,7 +29,7 @@ function performLogin() {
             if (response.ok) {
                 // Successful login, you can handle it here
                 console.log("Login successful");
-                myModal.hide();
+                window.location.href="../templates.Home/index.html";
             } else {
                 // Handle login failure, display an error message or take appropriate action
                 console.error("Login failed, Please try again");
