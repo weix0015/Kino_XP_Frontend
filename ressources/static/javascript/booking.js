@@ -22,11 +22,9 @@ document.getElementById("buy-tickets").addEventListener("click", function () {
             const viewing = viewingData;
 
             const requestBody = {
-                user_id: user,
-                amount: ticketAmount,
-                viewing: viewing,
-                seat: seat,
-                row: row
+                user_id: user.id,
+                viewing_id: viewing.id,
+                hall: viewing.hall,
             };
 
             return fetch(url, {
