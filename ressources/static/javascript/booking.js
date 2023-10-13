@@ -2,9 +2,21 @@
 document.getElementById("buy-tickets").addEventListener("click", function () {
   const url = "http://localhost:8080/ticket";
 
+  const ticketAmount = parseInt(document.getElementById("amount").value);
+  
+  const viewingDate = getSelection()
+
+  let user;
+  let seat;
+  let row;
+  let viewing;
+  
   const requestBody = {
-    amount: selectedSeats.length,
-    selectedSeats: selectedSeats
+    user: user,
+    amount: ticketAmount,
+    viewing: viewing,
+    seat: seat,
+    row: row
   };
   
   fetch(url, {
@@ -27,6 +39,7 @@ document.getElementById("buy-tickets").addEventListener("click", function () {
     .catch((error) => {
       console.error("Error creating a ticket:", error);
     });
+  console.log(JSON.stringify(requestBody));
 })
 
 const amountInput = document.getElementById("amount")
@@ -80,11 +93,13 @@ for (let row = 0; row < numRows; row++) {
   seatContainer.appendChild(rowElement);
 }
 
+
 // check if seat already booked
 function pageLoad() {
-  const seatUrl = "http://localhost:8080/seats";
-  const rowUrl = "http://localhost:8080/seat-rows"
-  
+  user = "http://localhost:8080/user/1";
+  seat = "http://localhost:8080/seats";
+  row = "http://localhost:8080/seat-rows";
+  viewing = "http://localhost:8080/viewing/1"
   const fetchData = async (url) => {
     try {
       const response = await fetch(url);
@@ -97,10 +112,17 @@ function pageLoad() {
       console.error(`Error fetching data from ${url}: ${error.message}`);
     }
   }
+  fetchData(userUrl)
+    .then((userData) => {
+      user = userData;
+    })
+    .catch((error) => {
+      console.error('Error fetching user data:', error);
+    })
   
   fetchData(seatUrl)
     .then((seatData) => {
-      console.log('Seat data:', seatData);
+      seat = seatData;
     })
     .catch((error) => {
       console.error('Error fetching seat data:', error);
@@ -108,11 +130,18 @@ function pageLoad() {
 
   fetchData(rowUrl)
     .then((rowData) => {
-      console.log('Row data:', rowData);
+      row = rowData;
     })
     .catch((error) => {
       console.error('Error fetching row data:', error);
     });
+  fetchData(viewingUrl)
+    .then((viewingData) => {
+      viewing = viewingData;
+    })
+    .catch((error) => {
+      console.error('Error fetching viewing data:', error);
+    })
 }
 
 
