@@ -96,3 +96,16 @@ body {
     cursor: pointer;
 }
 
+.confirm-container {
+    margin-top: 0;
+    margin-left: 80%;
+}
+
+.confirm-button {
+    border: transparent;
+    background: transparent;
+    font-size: 20px;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: #F5F5F5;
+}
+
