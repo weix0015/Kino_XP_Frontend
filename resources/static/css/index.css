@@ -172,6 +172,9 @@ body {
     border: 5px solid #FFFFFF;
 }
 
+.time-button {
+    margin-right: 15px; /* Adjust the margin as needed */
+}
 
 .movie-card {
     display: inline-block; /* Vis filmkortene ved siden af hinanden */
