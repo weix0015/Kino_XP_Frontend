@@ -11,31 +11,44 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.input-container {
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    min-width: 100px;
-    margin: 10px;
-    text-align: center;
-}
-
 .border {
-    background-image: url("../image/logo.png");
-    background-repeat: no-repeat;
-    background-position: top center;
+    background: url("../image/logo.png") no-repeat top center;
     background-size: contain;
     border: 2px solid #FFE296;
-    width: 20%;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Arrange the children elements in a column */
     align-items: center;
-    min-height: 50vh;
+    min-height: 40vh; /* Adjust the height as needed */
+}
+
+.text-container {
+    margin-top: 20px; /* Add space between the logo and the text */
+    text-align: center;
+    width: 100%; /* Make the text container full width */
+}
+
+.link-text {
+    font-family: "Montserrat", sans-serif;
+    color: #FFE296;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.link-text:hover {
+    text-decoration: none;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login {
-    margin-top: 30%;
+    margin-top: 20%;
+    padding-top: 10%;
+    text-align: center;
 }
 
 .input-container {
@@ -43,9 +56,10 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
+    color: white;
 }
 
-input[type="text"]
+input[type="text"],
 input[type="password"] {
     width: 100px;
     padding: 5px;
@@ -57,13 +71,12 @@ button {
     width: 100%;
     padding: 10px;
     background-color: #FFE296;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-
 }
-button:hover{
+
+button:hover {
     background-color: #005FAB;
 }
-
