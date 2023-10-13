@@ -9,7 +9,7 @@ document.getElementById("buy-tickets").addEventListener("click", function () {
   const seatUrl = "http://localhost:8080/seats";
   const rowUrl = "http://localhost:8080/seat-rows";
   const viewingUrl = "http://localhost:8080/viewing/1";
-
+//
   Promise.all([
     fetchData(userUrl),
     fetchData(seatUrl),
