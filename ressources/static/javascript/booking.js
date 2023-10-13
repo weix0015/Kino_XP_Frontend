@@ -1,16 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-  let loginButton = document.querySelector('.login-button');
-  let loginModal = document.getElementById('login-modal');
-  let modal = new bootstrap.Modal(loginModal);
-
-  loginButton.addEventListener('click', function () {
-    modal.show();
-  })
-})
-
 // click on buy ticket submit button
 document.getElementById("buy-tickets").addEventListener("click", function () {
-  const url = "/ticket";
+  const url = "http://localhost:8080/ticket";
   
   const ticketAmount = parseInt(document.getElementById("amount").value);
 
@@ -58,6 +48,7 @@ function updateSelectedSquares() {
   });
 }
 
+/* change input number button */
 amountInput.addEventListener("change", function () {
   selectedAmount = parseInt(amountInput.value);
   updateSelectedSquares();
