@@ -1,5 +1,5 @@
 const login = "http://localhost:8080/login";
-getMovies();
+//getMovies();
 let movies = [];
 // JavaScript code to open the modal
 const openModalButton = document.getElementById("login-button");
