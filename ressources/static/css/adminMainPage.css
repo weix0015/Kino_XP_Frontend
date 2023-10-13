@@ -14,28 +14,23 @@ body {
 }
 
 .purpleMenu {
-    width: 96.1%;
-    height: 4rem;
+    width: 95.8%;
+    height: 3rem;
     background-color: #b483cb;
     position: relative;
     left: 2%;
-    z-index: 20;
+    margin-top: 0.5%;
 }
 
 .login-button {
-
+    margin-left: 1%;
+    margin-top: 0.7%;
+    position: relative;
     font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 150%;
-    color: #FFFFFF;
-    position: absolute;
-    left: 10%;
-    transform: translate(-60%, -35%);
-    padding: 5%;
-    background-color: transparent;
+    font-size: 20px;
     border: none;
-
+    background: transparent;
+    color: #F5F5F5;
 }
 
 .login-button:hover{
