@@ -1,6 +1,6 @@
 const login = "http://localhost:8080/login";
 getMovies();
-
+let data = [];
 
 function getMovies() {
     fetch("http://localhost:8080/movies")
@@ -62,130 +62,101 @@ function getMovies() {
             console.error("An error occurred:", error);
         });
 }
+// Function to generate date buttons
+function generateDateButtons() {
+    const dateButtonContainer = document.getElementById('dateButtonContainer');
+    const currentDate = new Date();
 
-    /*
-    async function getMovies() {
-        try {
-            const response = await fetch("http://localhost:8080/movies");
-            const data = await response.json();
+    for (let i = 0; i < 7; i++) {
+        const date = new Date(currentDate);
+        date.setDate(date.getDate() + i);
 
-            const movieList = document.getElementById("movieList");
-            data.forEach(movie => {
-                const movieCard = document.createElement("div");
-                movieCard.className = "movie-card";
+        const button = document.createElement('button');
+        button.className = 'dateButton';
+        button.textContent = formatDate(date);
+        button.dataset.date = formatDateISO(date);
 
-                const moviePoster = document.createElement("img");
-                moviePoster.src = movie.posterUrl;
-                moviePoster.className = "movie-poster";
-                movieCard.appendChild(moviePoster);
+        dateButtonContainer.appendChild(button);
+    }
+}
 
-                const movieTitle = document.createElement("h2");
-                movieTitle.textContent = movie.title;
-                movieTitle.className = "movie-headline";
-                movieCard.appendChild(movieTitle);
-                const showtimesContainer = document.createElement("div");
-                showtimesContainer.className = "showtimes-container";
-                movie.showtimes.forEach(showtime => {
-                    const showtimeButton = document.createElement("button");
-                    showtimeButton.className = "time-button";
-                    showtimeButton.textContent = showtime;
-                    showtimeButton.addEventListener("click", function(event) {
-                        event.preventDefault();
-                        // Her kan du håndtere, hvad der skal ske, når en tid klikkes, f.eks. omdirigere til booking siden
-                    });
+function formatDate(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    return `${day}.${month}`;
+}
 
+function formatDateISO(date) {
+    return date.toISOString().split('T')[0];
+}
+
+// Add click event listeners to date buttons
+generateDateButtons();
+const dateButtons = document.querySelectorAll('.dateButton');
+dateButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        console.log('Button clicked!');
+        const selectedDate = button.getAttribute('data-date');
+        filterMoviesByDate(selectedDate);
+    });
+});
+
+function filterMoviesByDate(selectedDate) {
+    console.log(data)
+    // Replace 'data' with your movie data variable
+    const filteredMoviesPromises = data.map(movie => {
+        // Get all viewings for this movie
+        const viewingPromises = movie.viewing_ids.map(getViewById);
+
+        // Wait for all viewings to be fetched
+        return Promise.all(viewingPromises)
+            .then(viewings => {
+                // Check if the movie has a viewing on the selected date
+                return viewings.some(viewing => {
+                    const viewingDate = formatDateISO(new Date(viewing.showTime));
+                    return viewingDate === selectedDate;
                 });
-                showtimesContainer.appendChild(showtimeButton);
-                movieList.appendChild(movieCard);
-
-            });
-        } catch (error) {
-            console.error("An error occurred:", error);
-        }
-    }
-
-     */
-
-// Find alle tidspunkt-knapper
-
-
-// Løb igennem hver knap og tilføj en klikhåndterer
-
-
-    /*
-    function getMovies(){
-        fetch("http://localhost:8080/movies")
-        .then(response => response.json())
-        .then(data => {
-            const movieList = document.getElementById("movieList");
-            data.forEach(movie => {
-                const movieCard = document.createElement("div");
-                movieCard.className = "movie-card";
-
-                if(movie.poster && movie.title){
-                const moviePoster = document.createElement("img");
-                moviePoster.src = movie.poster;
-                movieCard.appendChild(moviePoster);
-
-                const movieTitle = document.createElement("h2");
-                movieTitle.textContent = movie.title;
-                movieCard.appendChild(movieTitle);
-                }
-                else{
-                    console.log("Couldn't find movie")
-                }
-
-                movieList.appendChild(movieCard);
-            });
-        })
-        .catch(error => {
-            console.error("An error occurred:", error);
-        });
-    }
-
-    /*function getMoviePoster(title) {
-        // Erstat 'title' med den faktiske titel, du ønsker at søge efter
-        const apiUrl = `http://localhost:8080/movie-poster?title=${encodeURIComponent("The Matrix")}`;
-
-        fetch(apiUrl)
-            .then(response => response.text()) // eller response.json(), afhængigt af API'ets svarformat
-            .then(data => {
-                // 'data' indeholder svar fra din backend (f.eks. OMDB API-svaret)
-                console.log("OMDB API Response:", data);
-                // Behandle API-svaret her
             })
-            .catch(error => {
-                console.error("An error occurred:", error);
-            });
-    }*/
-
-
-// Function to fetch objects by their IDs and insert them into a list
-    async function fetchViewingsList(ids, listElementId) {
-        const listElement = document.getElementById(listElementId);
-
-        if (!listElement) {
-            console.error(`List element with ID ${listElementId} not found.`);
-            return;
-        }
-
-        // Loop through the array of IDs
-        for (const id of ids) {
-            try {
-                const response = await fetch(`http://localhost:8080/viewing/${id}`); // Replace with your API endpoint
-                if (response.ok) {
-                    const data = await response.json();
-                    const listItem = document.createElement('li');
-                    listItem.textContent = data.name; // Change 'name' to the property you want to display
-                    listElement.appendChild(listItem);
-                } else {
-                    console.error(`Failed to fetch object with ID ${id}`);
+            .then(isShowingOnSelectedDate => {
+                // If the movie is showing on the selected date, include it in the filtered movies
+                if (isShowingOnSelectedDate) {
+                    return movie;
                 }
-            } catch (error) {
-                console.error(`Error while fetching object with ID ${id}: ${error}`);
+            });
+    });
+
+    // Wait for all movies to be filtered
+    Promise.all(filteredMoviesPromises)
+        .then(filteredMovies => {
+            // Remove undefined values (movies that are not showing on the selected date)
+            return filteredMovies.filter(movie => movie !== undefined);
+        })
+        .then(filteredMovies => {
+            if (filteredMovies.length > 0) {
+                updateMovieDisplay(filteredMovies);
+            } else {
+                console.log('No movies are showing on this date.');  // Add this line
             }
-        }
+        });
+
+
+// Implement this function to get a viewing by its ID from the data
+    function getViewById(viewingId) {
+        // Return the Promise from the fetch request
+        return fetch(`http://localhost:8080/viewing/${viewingId}`)
+            .then(response => response.json());
     }
+
+
+// Implement this function to update the display of movies
+    function updateMovieDisplay(filteredMovies) {
+        // Clear the existing movie display (e.g., remove child nodes from the movieList container)
+
+        // Create and append new movie elements for the filteredMovies
+        // Append these elements to the movieList container
+    }
+}
+
 
 
 

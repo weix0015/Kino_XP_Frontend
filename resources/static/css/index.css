@@ -104,6 +104,7 @@ body {
     z-index: 20;
 }
 
+/*
 .dateButton {
     width: 120px;
     height: 120px;
@@ -119,6 +120,90 @@ body {
     top: 220px;
 }
 
+ */
+
+.hamburger1 .top,
+.hamburger1 .meat,
+.hamburger1 .bottom {
+    width: 40px; /* Ændre bredden efter behov */
+    height: 4px; /* Ændre højden efter behov */
+}
+
+/* Juster afstanden mellem elementerne efter behov */
+.hamburger1 .top {
+    margin-bottom: 5px;
+}
+
+.hamburger1 .meat {
+    margin-bottom: 5px;
+}
+
+/* Hamburger menu */
+.hamburger1 {
+    height: 4.5rem; /* Converted from 45px */
+    margin: 1rem; /* Converted from 10px */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 120;
+}
+
+.hamburger1 div {
+    background-color: #FFE296;
+    position: relative;
+    width: 4rem; /* Converted from 40px */
+    height: 0.5rem; /* Converted from 5px */
+    margin: 0.5rem 0; /* Added some margin for spacing */
+    transition: all 0.2s ease-in-out;
+}
+
+#toggle1 {
+    display: none;
+}
+
+#toggle1:checked + .hamburger1 .top {
+    transform: rotate(-45deg) translate(0rem, 7px);
+    margin-top: 0rem; /* Converted from 22.5px */
+}
+
+#toggle1:checked + .hamburger1 .meat {
+    transform: rotate(45deg) translate(0rem, -7px);
+    margin-top: 0rem; /* Converted from -5px */
+}
+
+#toggle1:checked + .hamburger1 .bottom {
+    transform: scale(0);
+}
+
+#toggle1:checked ~ .menu1 {
+    height: 35rem; /* Converted from 340px */
+    width: 20rem;
+    z-index: 121;
+}
+.dateButtons {
+    display: flex; /* Use flexbox to arrange buttons in a row */
+    align-items: center; /* Vertically center buttons */
+    gap: 10px; /* Add some space between buttons */
+    flex-direction: row;
+}
+
+.dateButton {
+    /* Your existing button styles here */
+    padding: 5px 10px; /* Add padding to the buttons */
+    margin-right: 20px;
+    width: 120px;
+    height: 120px;
+    border: 5px solid #ffe296;
+    background-color: transparent;
+    color: #FFFFFF;
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 650;
+}
+
+
+
+/*
 .dateButtons{
     display: flex;
     flex-direction: row;
@@ -154,7 +239,7 @@ body {
 
 .dateButton7{
 
-}
+}*/
 
 
 .movieList{
