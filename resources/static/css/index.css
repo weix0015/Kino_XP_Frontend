@@ -96,12 +96,12 @@ body {
 }
 
 .purpleMenu {
-    width: 98rem;
-    height: 40px;
+    width: 96.1%;
+    height: 2rem;
     background-color: #b483cb;
     position: relative;
-    top: 35px;
-    left: 20px;
+    left: 2%;
+    z-index: 20;
 }
 
 .dateButton {
