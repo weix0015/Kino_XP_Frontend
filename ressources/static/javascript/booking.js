@@ -1,11 +1,10 @@
 // click on buy ticket submit button
 document.getElementById("buy-tickets").addEventListener("click", function () {
   const url = "http://localhost:8080/ticket";
-  
-  const ticketAmount = parseInt(document.getElementById("amount").value);
 
   const requestBody = {
-    amount: ticketAmount
+    amount: selectedSeats.length,
+    selectedSeats: selectedSeats
   };
   
   fetch(url, {
@@ -83,30 +82,36 @@ for (let row = 0; row < numRows; row++) {
 
 // check if seat already booked
 function pageLoad() {
-  const responseEntities = [];
-  const fetchAndStoreResponse = async (url) => {
+  const seatUrl = "http://localhost:8080/seats";
+  const rowUrl = "http://localhost:8080/seat-rows"
+  
+  const fetchData = async (url) => {
     try {
       const response = await fetch(url);
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      responseEntities.push(data);
+      return data;
     } catch (error) {
-      console.error(`Error fetching ${url}: ${error.message}`);
+      console.error(`Error fetching data from ${url}: ${error.message}`);
     }
   }
-
-  const fetchPromises = urls.map(fetchAndStoreResponse);
-
-  Promise.all(fetchPromises)
-    .then(() => {
-      console.log('All requests have been completed.')
-      console.log('Response entities:', responseEntities)
+  
+  fetchData(seatUrl)
+    .then((seatData) => {
+      console.log('Seat data:', seatData);
     })
     .catch((error) => {
-      console.error('Error fetching one or more URLs:', error)
+      console.error('Error fetching seat data:', error);
+    });
+
+  fetchData(rowUrl)
+    .then((rowData) => {
+      console.log('Row data:', rowData);
+    })
+    .catch((error) => {
+      console.error('Error fetching row data:', error);
     });
 }
 
