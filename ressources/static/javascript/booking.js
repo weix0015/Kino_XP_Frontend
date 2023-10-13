@@ -1,5 +1,71 @@
 // click on buy ticket submit button
 document.getElementById("buy-tickets").addEventListener("click", function () {
+    const url = "http://localhost:8080/ticket";
+    const ticketAmount = parseInt(document.getElementById("amount").value);
+
+    // Fetch user, viewing, seat, and row data here
+    const userUrl = "http://localhost:8080/user/id/1";
+    const seatUrl = "http://localhost:8080/seats";
+    const rowUrl = "http://localhost:8080/seat-rows";
+    const viewingUrl = "http://localhost:8080/viewing/1";
+
+    Promise.all([
+        fetchData(userUrl),
+        fetchData(seatUrl),
+        fetchData(rowUrl),
+        fetchData(viewingUrl)
+    ])
+        .then(([userData, seatData, rowData, viewingData]) => {
+            const user = userData;
+            const seat = seatData;
+            const row = rowData;
+            const viewing = viewingData;
+
+            const requestBody = {
+                user_id: userz,
+                amount: ticketAmount,
+                viewing: viewing,
+                seat: seat,
+                row: row
+            };
+
+            return fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(requestBody),
+            });
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Failed to create a ticket");
+            }
+        })
+        .then((data) => {
+            console.log("Ticket created:", data);
+        })
+        .catch((error) => {
+            console.error("Error creating a ticket:", error);
+        });
+});
+
+function fetchData(url) {
+    return fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.error(`Error fetching data from ${url}: ${error.message}`);
+        });
+}
+
+    /*
   const url = "http://localhost:8080/ticket";
 
   const ticketAmount = parseInt(document.getElementById("amount").value);
@@ -41,6 +107,8 @@ document.getElementById("buy-tickets").addEventListener("click", function () {
     });
   console.log(JSON.stringify(requestBody));
 })
+
+     */
 
 const amountInput = document.getElementById("amount")
 const seatContainer = document.getElementById('seat-container');
@@ -96,6 +164,7 @@ for (let row = 0; row < numRows; row++) {
 
 // check if seat already booked
 function pageLoad() {
+    /*
   user = "http://localhost:8080/user/1";
   seat = "http://localhost:8080/seats";
   row = "http://localhost:8080/seat-rows";
@@ -142,6 +211,8 @@ function pageLoad() {
     .catch((error) => {
       console.error('Error fetching viewing data:', error);
     })
+
+     */
 }
 
 
