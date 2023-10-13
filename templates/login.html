@@ -2,27 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login In page</title>
-    <link rel="stylesheet" type="text/css" href="../ressources/static/css/login.css"> <!-- linke to the CSS file -->
-
+    <title>Login/Registration Page</title>
+    <link rel="stylesheet" type="text/css" href="../ressources/static/css/login.css">
 </head>
 <body>
 <div class="border">
-<div class="login-container"></div>
-<form id="loginForm">
-    <div class="login">
-    <div class="input-container">
-        <label for="email"></label>
-        <input type="text" id="email" placeholder="Email" required>
+    <div class="login-container">
+        <p id="toggleFormText" class="link-text">Not a member yet, create user here</p>
     </div>
-    <div class="input-container">
-        <label for="password"></label>
-        <input type="password" id="password" placeholder="password" required>
-    </div>
-    <button id="btn-save"type="submit">Log In</button>
-    </div>
-</form>
+    <form id="loginForm">
+        <div class="login">
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button id="btn-save" type="submit">Log In</button>
+        </div>
+    </form>
+    <form id="registrationForm" style="display: none;">
+        <div class="login">
+            <div class="input-container">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-container">
+                <label for="newEmail">New Email</label>
+                <input type="text" id="newEmail" placeholder="Enter a new email" required>
+            </div>
+            <div class="input-container">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" placeholder="Enter a new password" required>
+            </div>
+            <button id="btn-register" type="submit">Register</button>
+        </div>
+    </form>
 </div>
+
 <script src="../ressources/static/javascript/login.js"></script>
 </body>
 </html>

@@ -1,26 +1,18 @@
 const login = "http://localhost:8080/login";
-getMovies();
-let movies = [];
-// JavaScript code to open the modal
-const openModalButton = document.getElementById("login-button");
-const myModal = new bootstrap.Modal(document.getElementById('login-modal'));
-openModalButton.addEventListener("click", () => {
-  myModal.show();
-});
-// Function to perform login
+const registration = "http://localhost:8080/user";
+const loginForm = document.getElementById("loginForm");
+const registrationForm = document.getElementById("registrationForm");
+const toggleFormText = document.getElementById("toggleFormText");
+
 function performLogin() {
   const email = document.getElementById("email").value;
-  console.log(email)
   const password = document.getElementById("password").value;
-  console.log(password)
 
-  // Create an object with the username and password
   const userData = {
     email: email,
     password: password
   };
 
-  // Send a POST request to the server
   fetch(login, {
     method: "POST",
     headers: {
@@ -28,25 +20,77 @@ function performLogin() {
     },
     body: JSON.stringify(userData)
   })
-    .then(response => {
-      if (response.ok) {
-        // Successful login, you can handle it here
-        console.log("Login successful");
-        myModal.hide();
-      } else {
-        // Handle login failure, display an error message or take appropriate action
-        console.error("Login failed, Please try again");
-      }
-
-    })
-    .catch(error => {
-      console.error("An error occurred:", error);
-    });
+      .then(response => {
+        if (response.ok) {
+          console.log("Login successful");
+          window.location.href = "index.html";
+        } else {
+          console.error("Login failed, Please try again");
+        }
+      })
+      .catch(error => {
+        console.error("An error occurred:", error);
+      });
 }
 
-// Add event listener to the login form submit button
+function performRegistration() {
+  const name = document.getElementById("name").value;
+  const newEmail = document.getElementById("newEmail").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const admin = null;
+
+  const userData = {
+    name: name,
+    email: newEmail,
+    password: newPassword,
+    admin
+  };
+
+  fetch(registration, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)
+  })
+      .then(response => {
+        if (response.ok) {
+          console.log("Registration successful");
+          // After successful registration, switch to the login form
+          loginForm.style.display = "block";
+          registrationForm.style.display = "none";
+          toggleFormText.innerText = "Already a User? Login here";
+        } else {
+          console.error("Registration failed, Please try again");
+        }
+      })
+      .catch(error => {
+        console.error("An error occurred:", error);
+      });
+}
+
+toggleFormText.addEventListener("click", () => {
+  if (loginForm.style.display === "none") {
+    // Switching to the registration form
+    loginForm.style.display = "block";
+    registrationForm.style.display = "none";
+    toggleFormText.innerText = "Not a member yet, create user here";
+  } else {
+    // Switching to the login form
+    loginForm.style.display = "none";
+    registrationForm.style.display = "block";
+    toggleFormText.innerText = "Already a User? Login here";
+  }
+});
+
 const loginButton = document.getElementById("btn-save");
 loginButton.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent the default form submission
-  performLogin(); // Call the login function
+  event.preventDefault();
+  performLogin();
+});
+
+const registerButton = document.getElementById("btn-register");
+registerButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  performRegistration();
 });
