@@ -1,6 +1,55 @@
-const login = "http://localhost:8080/login";
 getMovies();
 let data = [];
+
+function formatDateInDanish(date) {
+    const options = { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
+    const danishDate = date.toLocaleDateString('da-DK', options);
+    const uppercaseDanishDate = danishDate.toUpperCase();
+
+    return uppercaseDanishDate;
+}
+// Function to generate date buttons
+function generateDateButtons() {
+    const dateButtonContainer = document.getElementById('dateButtonContainer');
+    const currentDate = new Date();
+
+    for (let i = 0; i < 7; i++) {
+        const date = new Date(currentDate);
+        date.setDate(date.getDate() + i);
+
+        const button = document.createElement('button');
+        button.className = 'dateButton';
+        button.textContent = formatDate(date);
+        button.dataset.date = formatDateISO(date);
+
+        dateButtonContainer.appendChild(button);
+    }
+}
+
+function formatDate(date) {
+    const dayNames = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const formattedDate = `${dayNames[date.getDay()]} d${day} ${month}`.toUpperCase();
+
+    return formattedDate;
+}
+
+
+function formatDateISO(date) {
+    return date.toISOString().split('T')[0];
+}
+
+// Add click event listeners to date buttons
+generateDateButtons();
+const dateButtons = document.querySelectorAll('.dateButton');
+dateButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        console.log('Button clicked!');
+        const selectedDate = button.getAttribute('data-date');
+        filterMoviesByDate(selectedDate);
+    });
+});
 
 function getMovies() {
     fetch("http://localhost:8080/movies")
@@ -35,7 +84,7 @@ function getMovies() {
                                 // Access the properties of the fetched Viewing object
                                 const showtimeButton = document.createElement("button");
                                 showtimeButton.className = "time-button";
-                                showtimeButton.textContent = new Date(viewing.showTime).toLocaleString(); // Format showTime on the frontend
+                                showtimeButton.textContent = formatDateInDanish(new Date(viewing.showTime)) // Format showTime on the frontend
                                 showtimeButton.addEventListener("click", function (event) {
                                     event.preventDefault();
                                     // Handle what should happen when a time is clicked
@@ -62,44 +111,6 @@ function getMovies() {
             console.error("An error occurred:", error);
         });
 }
-// Function to generate date buttons
-function generateDateButtons() {
-    const dateButtonContainer = document.getElementById('dateButtonContainer');
-    const currentDate = new Date();
-
-    for (let i = 0; i < 7; i++) {
-        const date = new Date(currentDate);
-        date.setDate(date.getDate() + i);
-
-        const button = document.createElement('button');
-        button.className = 'dateButton';
-        button.textContent = formatDate(date);
-        button.dataset.date = formatDateISO(date);
-
-        dateButtonContainer.appendChild(button);
-    }
-}
-
-function formatDate(date) {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    return `${day}.${month}`;
-}
-
-function formatDateISO(date) {
-    return date.toISOString().split('T')[0];
-}
-
-// Add click event listeners to date buttons
-generateDateButtons();
-const dateButtons = document.querySelectorAll('.dateButton');
-dateButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        console.log('Button clicked!');
-        const selectedDate = button.getAttribute('data-date');
-        filterMoviesByDate(selectedDate);
-    });
-});
 
 function filterMoviesByDate(selectedDate) {
     console.log(data)
