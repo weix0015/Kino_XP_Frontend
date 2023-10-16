@@ -96,7 +96,7 @@ body {
     width: 100%; /* Occupy the full width of the container */
 
 }
-/* Styles for the popup container */
+/* Styles for the popup container(No movies on this date) */
 .popup-container {
     display: none;
     position: fixed;
@@ -110,7 +110,7 @@ body {
     z-index: 1;
 }
 
-/* Styles for the popup content */
+/* Styles for the popup content (no movies on this date) */
 .popup-content {
     background-color: #fff;
     padding: 20px;
@@ -119,7 +119,7 @@ body {
     text-align: center;
 }
 
-/* Style for the close button */
+/* Style for the close button (No movies on this date)*/
 #closePopup {
     background-color: #007bff;
     color: #fff;
