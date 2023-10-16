@@ -1,11 +1,5 @@
 let movieData;
-// Formater dato
-function formatDateInDanish(date) {
-    const options = { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
-    const danishDate = date.toLocaleDateString('da-DK', options);
-    const uppercaseDanishDate = danishDate.toUpperCase();
-    return uppercaseDanishDate;
-}
+
 
 // Function to fetch and display movies
 async function getMovies() {
@@ -16,65 +10,7 @@ async function getMovies() {
         movieList.innerHTML = ''; // Clear the movieList
 
         for (const movie of movieData) {
-            const movieCard = document.createElement("div");
-            movieCard.className = "mb-4 d-flex"; // Use Bootstrap classes to make it a flex container
-
-            const posterContainer = document.createElement("div");
-            posterContainer.className = "poster-container";
-
-            const moviePoster = document.createElement("img");
-            moviePoster.src = movie.posterUrl;
-            moviePoster.className = "movie-poster"; // Use Bootstrap classes
-            posterContainer.appendChild(moviePoster);
-
-            const titleShowtimesContainer = document.createElement("div");
-            titleShowtimesContainer.className = "title-showtimes-container d-flex flex-column";
-
-            const titleContainer = document.createElement("div");
-            titleContainer.className = "movie-title";
-
-            const movieTitle = document.createElement("h2");
-            movieTitle.textContent = movie.title;
-            titleContainer.appendChild(movieTitle);
-
-            if (movie.viewing_ids !== null) {
-                movieTitle.textContent += " Show Times";
-            }
-            if (movie.title === "Morbius") {
-                movieTitle.textContent = "Morbin Times";
-            }
-
-            const showtimesContainer = document.createElement("div");
-            showtimesContainer.className = "showtimes-container";
-
-            if (movie.viewing_ids !== null) {
-                // Fetch all viewings and sort them by date
-                const viewings = await Promise.all(
-                    movie.viewing_ids.map(async viewingId => {
-                        const response = await fetch(`http://localhost:8080/viewing/${viewingId}`);
-                        return response.json();
-                    })
-                );
-
-                viewings.sort((a, b) => new Date(a.showTime) - new Date(b.showTime));
-
-                for (const viewing of viewings) {
-                    const showtimeButton = document.createElement("button");
-                    showtimeButton.className = "btn btn-primary mr-2"; // Use Bootstrap classes
-                    showtimeButton.textContent = formatDateInDanish(new Date(viewing.showTime));
-                    showtimesContainer.appendChild(showtimeButton);
-                }
-            } else {
-                const errorMessage = document.createElement("p");
-                errorMessage.textContent = "Movie viewing information is missing or not in the expected format for " + movie.title;
-                showtimesContainer.appendChild(errorMessage);
-            }
-
-            titleShowtimesContainer.appendChild(titleContainer);
-            titleShowtimesContainer.appendChild(showtimesContainer);
-
-            movieCard.appendChild(posterContainer);
-            movieCard.appendChild(titleShowtimesContainer);
+            const movieCard = createMovieCard(movie);
 
             movieList.appendChild(movieCard);
         }
@@ -83,10 +19,154 @@ async function getMovies() {
     }
 }
 
+// Function to create a movie card element
+function createMovieCard(movie) {
+    const movieCard = document.createElement("div");
+    movieCard.className = "mb-4 d-flex"; // Use Bootstrap classes to make it a flex container
+
+    const posterContainer = document.createElement("div");
+    posterContainer.className = "poster-container";
+
+    const moviePoster = document.createElement("img");
+    moviePoster.src = movie.posterUrl;
+    moviePoster.className = "movie-poster"; // Use Bootstrap classes
+    posterContainer.appendChild(moviePoster);
+
+    const titleShowtimesContainer = document.createElement("div");
+    titleShowtimesContainer.className = "title-showtimes-container d-flex flex-column";
+
+    const titleContainer = document.createElement("div");
+    titleContainer.className = "movie-title";
+
+    const movieTitle = document.createElement("h2");
+    movieTitle.textContent = movie.title;
+    titleContainer.appendChild(movieTitle);
+
+    if (movie.viewing_ids !== null) {
+        movieTitle.textContent += " Show Times";
+
+        const showtimesContainer = document.createElement("div");
+        showtimesContainer.className = "showtimes-container";
+
+        // Fetch all viewings and sort them by date
+        movie.viewing_ids.map(async (viewingId) => {
+            // Fetch the viewing data (you can use fetch or any other method here)
+            const response = await fetch(`http://localhost:8080/viewing/${viewingId}`);
+            const viewing = await response.json();
+
+            // Create a showtime button and add it to the showtimesContainer
+            const showtimeButton = document.createElement("button");
+            showtimeButton.className = "btn btn-primary mr-2"; // Use Bootstrap classes
+
+            // Check and format the date here, ensure it's in a valid format
+            showtimeButton.textContent = formatDateInDanish(new Date(viewing.showTime));
+            showtimesContainer.appendChild(showtimeButton);
+        });
+
+        // Sort viewings by date (if needed)
+        movie.viewing_ids.sort((a, b) => new Date(a.showTime) - new Date(b.showTime));
+
+        titleShowtimesContainer.appendChild(titleContainer);
+        titleShowtimesContainer.appendChild(showtimesContainer);
+    }
+    if (movie.title === "Morbius") {
+        movieTitle.textContent = "Morbin Times";
+    }
+
+    movieCard.appendChild(posterContainer);
+    movieCard.appendChild(titleShowtimesContainer);
+
+    return movieCard;
+}
+
 // Call the getMovies function when the page loads
 window.addEventListener('load', getMovies);
 
+// Function to update the movie display
+function updateMovieDisplay(movies) {
+    const movieList = document.getElementById("movieList");
+    movieList.innerHTML = ''; // Clear the movieList
 
+    for (const movie of movies) {
+        const movieCard = document.createElement("div");
+        movieCard.className = "mb-4 d-flex"; // Use Bootstrap classes to make it a flex container
+
+        const posterContainer = document.createElement("div");
+        posterContainer.className = "poster-container";
+
+        const moviePoster = document.createElement("img");
+        moviePoster.src = movie.posterUrl;
+        moviePoster.className = "movie-poster"; // Use Bootstrap classes
+        posterContainer.appendChild(moviePoster);
+
+        const titleShowtimesContainer = document.createElement("div");
+        titleShowtimesContainer.className = "title-showtimes-container d-flex flex-column";
+
+        const titleContainer = document.createElement("div");
+        titleContainer.className = "movie-title";
+
+        const movieTitle = document.createElement("h2");
+        movieTitle.textContent = movie.title;
+        titleContainer.appendChild(movieTitle);
+
+        // Check if the movie has viewing_ids
+        if (movie.viewing_ids !== null) {
+            movieTitle.textContent += " Show Times";
+        }
+        // Special condition for a movie title
+        if (movie.title === "Morbius") {
+            movieTitle.textContent = "Morbin Times";
+        }
+
+        const showtimesContainer = document.createElement("div");
+        showtimesContainer.className = "showtimes-container";
+
+        if (movie.viewing_ids !== null) {
+            // Fetch all viewings and sort them by date
+            movie.viewing_ids.map(async (viewingId) => {
+                // Fetch the viewing data (you can use fetch or any other method here)
+                // For simplicity, let's assume you have a function getViewById(viewingId)
+                const response = await fetch(`http://localhost:8080/viewing/${viewingId}`);
+                const viewing = await response.json();
+
+                // Create a showtime button and add it to the showtimesContainer
+                const showtimeButton = document.createElement("button");
+                showtimeButton.className = "btn btn-primary mr-2"; // Use Bootstrap classes
+
+                // Check and format the date here, ensure it's in a valid format
+                const formattedDate = formatDateInDanish(new Date(viewing.showTime));
+                showtimeButton.textContent = formattedDate;
+                showtimesContainer.appendChild(showtimeButton);
+            });
+
+            // Sort viewings by date (if needed)
+            movie.viewing_ids.sort((a, b) => new Date(a.showTime) - new Date(b.showTime));
+        }
+
+        titleShowtimesContainer.appendChild(titleContainer);
+        titleShowtimesContainer.appendChild(showtimesContainer);
+
+        movieCard.appendChild(posterContainer);
+        movieCard.appendChild(titleShowtimesContainer);
+
+        movieList.appendChild(movieCard);
+    }
+}
+// Function to format a date in Danish
+function formatDateInDanish(date) {
+    // Format options for the date
+    const options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    // Convert date to Danish format and make it uppercase
+    const danishDate = date.toLocaleDateString('da-DK', options);
+    const uppercaseDanishDate = danishDate.toUpperCase();
+    return uppercaseDanishDate;
+}
 // Function to generate date buttons
 function generateDateButtons() {
     const dateButtonContainer = document.getElementById('dateButtonContainer');
@@ -125,6 +205,8 @@ function generateDateButtons() {
         });
     }
 }
+
+// Function to clear the date filter
 function clearDateFilter() {
     // Remove any date filter (selectedDate) and display all movies
     updateMovieDisplay(movieData);
@@ -155,7 +237,6 @@ dateButtons.forEach(button => {
         filterMoviesByDate(selectedDate);
     });
 });
-
 
 // Function to filter movies by date
 function filterMoviesByDate(selectedDate) {
@@ -207,74 +288,6 @@ function filterMoviesByDate(selectedDate) {
 }
 
 
-function updateMovieDisplay(movies) {
-    const movieList = document.getElementById("movieList");
-    movieList.innerHTML = ''; // Clear the movieList
-
-    for (const movie of movies) {
-        const movieCard = document.createElement("div");
-        movieCard.className = "mb-4 d-flex"; // Use Bootstrap classes to make it a flex container
-
-        const posterContainer = document.createElement("div");
-        posterContainer.className = "poster-container";
-
-        const moviePoster = document.createElement("img");
-        moviePoster.src = movie.posterUrl;
-        moviePoster.className = "movie-poster"; // Use Bootstrap classes
-        posterContainer.appendChild(moviePoster);
-
-        const titleShowtimesContainer = document.createElement("div");
-        titleShowtimesContainer.className = "title-showtimes-container d-flex flex-column";
-
-        const titleContainer = document.createElement("div");
-        titleContainer.className = "movie-title";
-
-        const movieTitle = document.createElement("h2");
-        movieTitle.textContent = movie.title;
-        titleContainer.appendChild(movieTitle);
-
-        if (movie.viewing_ids !== null) {
-            movieTitle.textContent += " Show Times";
-        }
-        if (movie.title === "Morbius") {
-            movieTitle.textContent = "Morbin Times";
-        }
-
-        const showtimesContainer = document.createElement("div");
-        showtimesContainer.className = "showtimes-container";
-
-        if (movie.viewing_ids !== null) {
-            // Fetch all viewings and sort them by date
-            movie.viewing_ids.map(async (viewingId) => {
-                // Fetch the viewing data (you can use fetch or any other method here)
-                // For simplicity, let's assume you have a function getViewById(viewingId)
-                const response = await fetch(`http://localhost:8080/viewing/${viewingId}`);
-                const viewing = await response.json();
-
-                // Create a showtime button and add it to the showtimesContainer
-                const showtimeButton = document.createElement("button");
-                showtimeButton.className = "btn btn-primary mr-2"; // Use Bootstrap classes
-
-                // Check and format the date here, ensure it's in a valid format
-                const formattedDate = formatDateInDanish(new Date(viewing.showTime));
-                showtimeButton.textContent = formattedDate;
-                showtimesContainer.appendChild(showtimeButton);
-            });
-
-            // Sort viewings by date (if needed)
-            movie.viewing_ids.sort((a, b) => new Date(a.showTime) - new Date(b.showTime));
-        }
-
-        titleShowtimesContainer.appendChild(titleContainer);
-        titleShowtimesContainer.appendChild(showtimesContainer);
-
-        movieCard.appendChild(posterContainer);
-        movieCard.appendChild(titleShowtimesContainer);
-
-        movieList.appendChild(movieCard);
-    }
-}
-
 // Function to show the popup with a message
 function showPopup(message) {
     const popupContainer = document.getElementById('popupContainer');
@@ -292,8 +305,54 @@ function hidePopup() {
 // Close button click event
 document.getElementById('closePopup').addEventListener('click', hidePopup);
 
+// Add event listeners for search functionality
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', performSearch);
+const searchInput = document.getElementById('search');
+const suggestionList = document.getElementById('suggestions');
 
+searchInput.addEventListener('input', displaySuggestions);
 
+// Function to display search suggestions
+function displaySuggestions() {
+    const searchInputValue = searchInput.value.trim().toLowerCase();
+    suggestionList.innerHTML = ''; // Clear existing suggestions
+
+    if (searchInputValue.length < 1) {
+        return; // Don't show suggestions if the search input is empty
+    }
+
+    // Filter movie titles that match the input
+    const matchingMovies = movieData.filter(movie => movie.title.toLowerCase().includes(searchInputValue));
+
+    // Display up to, let's say, 5 suggestions
+    const maxSuggestions = 5;
+    for (let i = 0; i < matchingMovies.length && i < maxSuggestions; i++) {
+        const suggestion = document.createElement('li');
+        suggestion.textContent = matchingMovies[i].title;
+
+        suggestion.addEventListener('click', () => {
+            // When a suggestion is clicked, populate the search input with that suggestion and perform the search
+            searchInput.value = matchingMovies[i].title;
+            performSearch();
+        });
+
+        suggestionList.appendChild(suggestion);
+    }
+}
+
+// Function to perform the search
+function performSearch() {
+    const searchInput = document.getElementById('search').value;
+    // Use the search input to filter the movieData
+    const filteredMovies = movieData.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()));
+
+    // Update the movie list to display the filtered movies
+    updateMovieDisplay(filteredMovies);
+
+    // Clear the search input
+    document.getElementById('search').value = '';
+}
 
 // Function to get a viewing by its ID from the data
 function getViewById(viewingId) {

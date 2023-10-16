@@ -129,3 +129,10 @@ body {
     cursor: pointer;
 }
 
+.suggestion-list {
+    list-style: none;
+    padding: 0;
+    background-color: #ffe296;
+    text-align: center;
+    text-decoration: #007bff;
+}
