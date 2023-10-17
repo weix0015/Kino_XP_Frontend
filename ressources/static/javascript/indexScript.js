@@ -60,6 +60,11 @@ function createMovieCard(movie) {
 
             // Check and format the date here, ensure it's in a valid format
             showtimeButton.textContent = formatDateInDanish(new Date(viewing.showTime));
+            
+            showtimeButton.addEventListener('click', function() {
+                window.location.href = 'booking.html'; // Ændr stien efter behov
+            });
+            
             showtimesContainer.appendChild(showtimeButton);
         });
 
