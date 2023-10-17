@@ -3,72 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../ressources/static/css/index.css">
+    <link rel="stylesheet" href="../ressources/static/css/navbar.css">
     <title>Akira Kino</title>
 </head>
 <body>
+<div class="frameTop">
+</div>
+<nav class="navbar purpleMenu">
+        <div id="menuToggle">
 
-<div class="frameTop"></div>
-<div class="purpleMenu">
-    <button onclick="window.location.href='login.html'" id="login-button" class="login-button">Login</button>
-    <script src="../ressources/static/javascript/login.js"></script>
-    <div class="search-container">
-        <label for="search"></label>
-        <input id="search" type="search" class="search-bar" placeholder="Search...">
-        <button class="search-button">Søg</button>
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+                <a href="#"><li>Home</li></a>
+                <a href="#"><li>About</li></a>
+                <a href="#"><li>Info</li></a>
+                <a href="#"><li>Contact</li></a>
+            </ul>
+        </div>
+</nav>
+<div class="search-button">
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" id="search" class="form-control" placeholder="Søg..." aria-label="Search..."
+                       aria-describedby="search-button">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="search-button">Søg</button>
+                </div>
+            </div>
+            <ul id="suggestions" class="suggestion-list"></ul>
+        </div>
     </div>
 </div>
-
-<div class="dateButtons">
-    <div>
-        <button class="dateButton dateButton1">ALLE<br>DAGE</button>
-    </div>
-    <button class="dateButton dateButton2">TIRS<br>10<br>OKT</button>
-    <div>
-        <button class="dateButton dateButton3">ONS<br>11<br>OKT</button>
-    </div>
-    <div>
-        <button class="dateButton dateButton4">TORS<br>12<br>OKT</button>
-    </div>
-    <div style="margin-left: 35px">
-        <button class="dateButton dateButton5">FRE<br>13<br>OKT</button>
-    </div>
-    <div style="margin-left: 35px">
-        <button class="dateButton dateButton6">LØR<br>14<br>OKT</button>
-    </div>
-    <div style="margin-left: 35px">
-        <button class="dateButton dateButton7">SØN<br>15<br>OKT</button>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" id="dateButtonContainer" role="group" aria-label="Date Buttons">
+                <!-- Date buttons will be dynamically added here -->
+            </div>
+        </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<div id="movieList">
-
+<div id="popupContainer" class="popup-container">
+    <div class="popup-content">
+        <span id="popupMessage">No movies are showing on this date.</span>
+        <button id="closePopup">Close</button>
+    </div>
 </div>
-
-<!-- <a href="/bookingPage">
-
-     &lt;!&ndash; HTML-kode for tidspunkt-knapper &ndash;&gt;
-     <a href="#" class="time-button" data-movie-id="1" data-show-time="18:30">18.30</a>
-     <a href="#" class="time-button" data-movie-id="2" data-show-time="20:00">20.00</a>
-     <a href="#" class="time-button" data-movie-id="3" data-show-time="20:00">20.00</a>
-     &lt;!&ndash; Tilføj flere tidspunkt-knapper efter behov &ndash;&gt;
- </a>-->
+<div class="container mt-4">
+    <div class="row" id="movieList">
+        <!-- Movie cards will be dynamically added here -->
+    </div>
+</div>
+<!-- Bootstrap JavaScript and your custom JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../ressources/static/javascript/indexScript.js"></script>
-
 </body>
 </html>
