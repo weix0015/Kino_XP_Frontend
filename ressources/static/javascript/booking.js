@@ -1,10 +1,85 @@
+
+const amountInput = document.getElementById("amount")
+const seatContainer = document.getElementById('seat-container');
+
+let selectedAmount = 0;
+
 // click on buy ticket submit button
-document.getElementById("buy-tickets").addEventListener("click", function () {
+document.getElementById("buy-tickets").addEventListener("click", async () => {
+    const selectedSeats = [];
+    const rows = document.querySelectorAll( 'div#seat-container div.row' )
+    for ( let rowIndex= 0; rowIndex < rows.length; ++rowIndex ) {
+        const columns = rows[rowIndex].querySelectorAll( 'i' );
+        for ( let columnIndex = 0; columnIndex < columns.length; ++columnIndex ) {
+            const seat = columns[columnIndex];
+            if ( seat.classList.contains( 'selected' ) ) {
+                selectedSeats.push([ rowIndex, columnIndex ]);
+            }
+        }
+    }
+    console.log(selectedSeats)
+    const buyTicketResponse = await fetch("http://localhost:8080/ticket", {
+       method: "POST",
+       headers: {
+           "Content-type": "application/json",
+       },
+       body: JSON.stringify({
+           "selectedSeats": selectedSeats
+       }),
+    });
+    if (!buyTicketResponse.ok) {
+       console.error(`Error creating a ticket: status not ok: ${ buyTicketResponse.status }`);
+       return;
+    }
+    try {
+       const parsed_response = await buyTicketResponse.json();
+       console.log(`Ticket created: ${ parsed_response }`);
+    } catch (e) {
+       console.error(`Error creating a ticket: failed to parse response ${ await buyTicketResponse.text() }`);
+    }
+});
+
+
+seatContainer.addEventListener("click", function (event) {
+    const seat = event.target;
+    if (!seat.classList.contains('fa-square')) return;
+    seat.classList.toggle('selected');
+
+    selectedAmount = document.querySelectorAll('.selected').length;
+    amountInput.value = selectedAmount;
+})
+
+function fetchData(url) {
+    return fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.error(`Error fetching data from ${url}: ${error.message}`);
+        });
+}
+
+    /*
   const url = "http://localhost:8080/ticket";
 
+  const ticketAmount = parseInt(document.getElementById("amount").value);
+  
+  const viewingDate = getSelection()
+
+  let user;
+  let seat;
+  let row;
+  let viewing;
+  
   const requestBody = {
-    amount: selectedSeats.length,
-    selectedSeats: selectedSeats
+    user: user,
+    amount: ticketAmount,
+    viewing: viewing,
+    seat: seat,
+    row: row
   };
   
   fetch(url, {
@@ -27,12 +102,11 @@ document.getElementById("buy-tickets").addEventListener("click", function () {
     .catch((error) => {
       console.error("Error creating a ticket:", error);
     });
+  console.log(JSON.stringify(requestBody));
 })
 
-const amountInput = document.getElementById("amount")
-const seatContainer = document.getElementById('seat-container');
+     */
 
-let selectedAmount = 0;
 
 // only select the amount tickets user input
 function updateSelectedSquares() {
@@ -46,22 +120,6 @@ function updateSelectedSquares() {
     }
   });
 }
-
-/* change input number button */
-amountInput.addEventListener("change", function () {
-  selectedAmount = parseInt(amountInput.value);
-  updateSelectedSquares();
-});
-
-seatContainer.addEventListener("click", function (event) {
-  const seat = event.target;
-  if (seat.classList.contains('fa-square')) {
-    seat.classList.toggle('selected');
-
-    selectedAmount = document.querySelectorAll('.selected').length;
-    amountInput.value = selectedAmount;
-  }
-})
 
 // cinema hall for rows and seats
 const numRows = 20;
@@ -80,11 +138,14 @@ for (let row = 0; row < numRows; row++) {
   seatContainer.appendChild(rowElement);
 }
 
+
 // check if seat already booked
 function pageLoad() {
-  const seatUrl = "http://localhost:8080/seats";
-  const rowUrl = "http://localhost:8080/seat-rows"
-  
+    /*
+  user = "http://localhost:8080/user/1";
+  seat = "http://localhost:8080/seats";
+  row = "http://localhost:8080/seat-rows";
+  viewing = "http://localhost:8080/viewing/1"
   const fetchData = async (url) => {
     try {
       const response = await fetch(url);
@@ -97,10 +158,17 @@ function pageLoad() {
       console.error(`Error fetching data from ${url}: ${error.message}`);
     }
   }
+  fetchData(userUrl)
+    .then((userData) => {
+      user = userData;
+    })
+    .catch((error) => {
+      console.error('Error fetching user data:', error);
+    })
   
   fetchData(seatUrl)
     .then((seatData) => {
-      console.log('Seat data:', seatData);
+      seat = seatData;
     })
     .catch((error) => {
       console.error('Error fetching seat data:', error);
@@ -108,11 +176,20 @@ function pageLoad() {
 
   fetchData(rowUrl)
     .then((rowData) => {
-      console.log('Row data:', rowData);
+      row = rowData;
     })
     .catch((error) => {
       console.error('Error fetching row data:', error);
     });
+  fetchData(viewingUrl)
+    .then((viewingData) => {
+      viewing = viewingData;
+    })
+    .catch((error) => {
+      console.error('Error fetching viewing data:', error);
+    })
+
+     */
 }
 
 
