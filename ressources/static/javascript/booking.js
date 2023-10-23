@@ -202,3 +202,44 @@ const seats = document.querySelectorAll('.fa-square');
 seats.forEach(seat => {
   seat.addEventListener('click', toggleSeatColor);
 });
+// Function to parse query parameters from the URL
+function getQueryParameter(parameterName) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(parameterName);
+}
+
+window.onload = function () {
+    // Retrieve the selected movie details from session storage
+    const selectedMovieInfo = sessionStorage.getItem('selectedMovie');
+
+    if (selectedMovieInfo) {
+        // Parse the JSON data and display the movie details
+        const selectedMovie = JSON.parse(selectedMovieInfo);
+
+        // Update the page with the selected movie's title and poster URL
+        const movieTitleElement = document.querySelector('.movie-title');
+        movieTitleElement.textContent = selectedMovie.title;
+
+        const moviePoster = document.getElementById('movie-poster');
+        moviePoster.src = selectedMovie.posterUrl; // Set the poster image URL
+
+        const dateAndTimeElement = document.querySelector('.date-time');
+        dateAndTimeElement.textContent = formatDateInDanish(new Date(selectedMovie.date));
+    }
+};
+
+function formatDateInDanish(date) {
+    // Your date formatting code here
+    // For example:
+    const options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    return date.toLocaleDateString('da-DK', options).toUpperCase();
+}
+
+
+

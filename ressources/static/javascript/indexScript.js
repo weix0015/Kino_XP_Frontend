@@ -60,11 +60,11 @@ function createMovieCard(movie) {
 
             // Check and format the date here, ensure it's in a valid format
             showtimeButton.textContent = formatDateInDanish(new Date(viewing.showTime));
-            
+
             showtimeButton.addEventListener('click', function() {
                 window.location.href = 'booking.html'; // Ændr stien efter behov
             });
-            
+
             showtimesContainer.appendChild(showtimeButton);
         });
 
@@ -77,6 +77,15 @@ function createMovieCard(movie) {
     if (movie.title === "Morbius") {
         movieTitle.textContent = "Morbin Times";
     }
+
+    // Add click event listener to the movieCard
+    movieCard.addEventListener('click', function () {
+        // Store the selected movie's details in the session storage
+        sessionStorage.setItem('selectedMovie', JSON.stringify(movie));
+
+        // Redirect to the booking page
+        window.location.href = 'booking.html';
+    });
 
     movieCard.appendChild(posterContainer);
     movieCard.appendChild(titleShowtimesContainer);
@@ -366,5 +375,15 @@ function getViewById(viewingId) {
         .then(response => response.json());
 }
 
-// Call the getMovies function when the page loads
-window.addEventListener('load', getMovies);
+showtimeButton.addEventListener('click', function() {
+    // Get the selected movie's details
+    const selectedMovie = movie; // Replace this with the actual movie details
+
+    // Encode the movie details as a JSON string and include it in the URL
+    const selectedMovieInfo = encodeURIComponent(JSON.stringify(selectedMovie));
+
+    // Redirect to the booking page with the selected movie's details
+    window.location.href = `booking.html?movie=${selectedMovieInfo}`;
+});
+
+
